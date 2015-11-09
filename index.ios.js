@@ -13,6 +13,7 @@ var {
 } = React;
 
 var cardsapp = React.createClass({
+  displayName: 'CardsApp',
   render: function() {
     return (
       <View style={styles.container}>
@@ -28,7 +29,7 @@ var cardsapp = React.createClass({
         </Text>
       </View>
     );
-  }
+  },
 });
 
 var styles = StyleSheet.create({
