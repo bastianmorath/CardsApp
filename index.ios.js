@@ -1,10 +1,10 @@
 /**
- * Sample React Native App
+ * Sample React Natiive App
  * https://github.com/facebook/react-native
  */
 'use strict';
 
-var React = require('react-native');
+import React from 'react-native';
 var {
   AppRegistry,
   StyleSheet,
@@ -12,8 +12,8 @@ var {
   View,
 } = React;
 
-var cardsapp = React.createClass({
-  displayName: 'CardsApp',
+var CardsApp = React.createClass({
+  displayName: 'CardsAppApplicationiOS',
   render: function() {
     return (
       <View style={styles.container}>
@@ -51,4 +51,4 @@ var styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('cardsapp', () => cardsapp);
+AppRegistry.registerComponent('cardsapp', () => CardsApp);
