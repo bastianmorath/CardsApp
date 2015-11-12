@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node_modules/react-native/packager/packager.sh"
+    "start": "node_modules/react-native/packager/packager.sh",
+    "test": "grunt"
   },
   "dependencies": {
     "lodash": "^3.10.1",
@@ -14,6 +15,11 @@
     "babel-eslint": "^4.1.1",
     "bundle": "^0.2.3",
     "eslint": "^1.2.1",
-    "eslint-plugin-react": "^3.3.0"
+    "eslint-config-airbnb": "^1.0.0",
+    "eslint-plugin-react": "^3.3.0",
+    "grunt": "^0.4.5",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-eslint": "^17.1.0",
+    "load-grunt-tasks": "^3.2.0"
   }
 }
