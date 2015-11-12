@@ -4,7 +4,7 @@
  *
  * @flow
  */
-import React from 'react-native'
+import React from 'react-native';
  const {
    StyleSheet,
  } = React;
@@ -16,22 +16,25 @@ var Styles = StyleSheet.create({
 
 // TO DO: Set full height of view
   listview: {
-    flex: 1
+    flex: 1,
+    backgroundColor: 'lightgrey'
   },
   // style properties of a CardListCell
   cell: {
     height: 100,
-    backgroundColor: 'D9D7D7',
-    marginLeft: 10,
-    marginRight: 10,
-    marginTop: 5,
-    marginBottom: 5,
+    backgroundColor: 'white',
+    marginLeft: 6,
+    marginRight: 6,
+    marginTop: 3,
+    marginBottom: 3,
   },
 
   // style properties of a text-element in a cardListCell
+  //ToDo: Align Text vertically
   text: {
     fontSize: 20,
-    color: 'A19C9C',
+    // royal blue text color
+    color: '107896',
     textAlign: 'center',
     paddingTop: 40,
   }

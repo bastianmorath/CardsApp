@@ -21,6 +21,16 @@ flashcards = [
     'frontSide': 'Bastian Morath',
     'backSide': 'Bastian Morath is a swiss computer science student and software developer. He is best knwon for co-developing the CardsApp iOS application, that changed the way people learn forever.',
   },
+  {
+    'id': '4',
+    'frontSide': 'Lukas Reichart',
+    'backSide': 'Lukas Reichart is also a swiss computer science student and software developer. He is best knwon for co-developing the CardsApp iOS application, that changed the way people learn forever.',
+  },
+  {
+    'id': '5',
+    'frontSide': 'Difference between props and stats?',
+    'backSide': 'Lukas Reichart will (maybe) explain when to use props and when to use stats',
+  },
 ];
 
 export default flashcards;

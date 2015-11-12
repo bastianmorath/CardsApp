@@ -6,8 +6,8 @@
  */
 import _ from 'lodash';
 import React from 'react-native';
-import CardListCell from './CardListCell'
-import Styles from './Styles.js'
+import CardListCell from './CardListCell';
+import Styles from './Styles.js';
 
 const {
   PropTypes,
