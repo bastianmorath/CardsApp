@@ -1,9 +1,6 @@
 /**
- *
  * @author    ::  Bastian Morath and Lukas Reichart
  * @copyright ::  Bastian Morath and Lukas Reichart
- *
- * @flow
  */
 
 module.exports = function GruntInit(grunt) {
@@ -20,8 +17,22 @@ module.exports = function GruntInit(grunt) {
     //   }
     // },
 
+    flow: {
+      app: {
+        src: './',            // `.flowconfig` folder
+        options: {
+          background: false,    // Watch/Server mode
+          all: false,           // Check all files regardless
+          lib: '',              // Library directory
+          stripRoot: false,     // Relative vs Absolute paths
+          weak: false,          // Force weak check
+          showAllErrors: false, // Show more than 50 errors
+        },
+      },
+    },
+
     eslint: {
-      target: ['src/', 'index.ios.js'],
+      target: ['app/', 'index.ios.js', 'index.android.js'],
     },
 
     watch: {
@@ -31,12 +42,12 @@ module.exports = function GruntInit(grunt) {
           interrupt: true,
           debounceDelay: 250,
         },
-        files: ['Gruntfile.js', 'src/*.js', 'test/*.js', 'index.ios.js'],
+        files: ['Gruntfile.js', 'app/*.js', 'test/*.js', 'index.ios.js', 'index.android.js'],
         tasks: ['eslint', 'mochaTest'],
       },
     },
   });
 
-  grunt.registerTask('test', ['eslint']);
+  grunt.registerTask('test', ['eslint', 'flow']);
   grunt.registerTask('default', ['eslint']);
 };

@@ -1,6 +1,6 @@
 /**
- * Sample React Natiive App
- * https://github.com/facebook/react-native
+ * @author    ::  Bastian Morath and Lukas Reichart
+ * @copyright ::  Bastian Morath and Lukas Reichart
  */
 
 import React from 'react-native';
