@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node_modules/react-native/packager/packager.sh",
-    "test": "grunt test"
+    "test": "node -e \"require('grunt').tasks(['test']);\""
   },
   "dependencies": {
     "lodash": "^3.10.1",
