@@ -7,7 +7,7 @@
 import React from 'react-native';
 
 import CardList from './CardList';
-import flashcards from './../../../test/mock/flashcard.json';
+import flashcards from '../../../test/mock/flashcard';
 
 /**
  * The CardListContainer is the data container for the CardList component.
