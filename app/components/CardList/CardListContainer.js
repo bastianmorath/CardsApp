@@ -11,7 +11,7 @@ import flashcards from '../../../test/mock/flashcard';
 
 /**
  * The CardListContainer is the data container for the CardList component.
- * In futurue the CardListContainer will do all the data fetching and handling for
+ * In future the CardListContainer will do all the data fetching and handling for
  * the CardList component, at the moment it only loads some mock data and passes it
  * along to the component.
  */
