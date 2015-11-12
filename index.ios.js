@@ -10,9 +10,10 @@ const {
 } = React;
 import CardListContainer from './app/components/CardList/CardListContainer';
 
-let CardsApp;
-
-CardsApp = React.createClass({
+/**
+ * CardApp is the main iOS Component of the CardApps application.
+ */
+const CardsApp = React.createClass({
   displayName: 'CardsAppApplicationiOS',
   render() {
     return (

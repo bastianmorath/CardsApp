@@ -16,9 +16,7 @@ const {
  * The CardList component is responsible for displaying a scrollable list of an
  * array of flashcards.
  */
-let CardList;
-
-CardList = React.createClass({
+const CardList = React.createClass({
   displayName: 'CardList',
   propTypes: {
     flashcards: PropTypes.array,

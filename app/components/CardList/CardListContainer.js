@@ -15,9 +15,7 @@ import flashcards from '../../../test/mock/flashcard';
  * the CardList component, at the moment it only loads some mock data and passes it
  * along to the component.
  */
-let CardListContainer;
-
-CardListContainer = React.createClass({
+const CardListContainer = React.createClass({
   displayName: 'CardListContainer',
 
   render() {
