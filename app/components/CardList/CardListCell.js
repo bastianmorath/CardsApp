@@ -5,7 +5,7 @@
  * @flow
  */
 import React from 'react-native';
-import Styles from './Styles.js';
+import Styles from './CardListStyles.js';
 const {
   PropTypes,
   View,
@@ -17,17 +17,18 @@ const {
  * flashcard, used in a ListView
  */
 
- const CardListCell = React.createClass({
-   propTypes: {
-     flashcard: PropTypes.item
-    },
+const CardListCell = React.createClass({
+  propTypes: {
+    flashcard: PropTypes.object,
+  },
 
-      render(){
-        return(
+  render() {
+    return (
         <View style={Styles.cell}>
-          <Text style={Styles.text}>{this.props.flashcard.backSide}</Text>
+          <Text style={Styles.text}>{this.props.flashcard.frontSide}</Text>
         </View>
-      )  }
- });
+    );
+  },
+});
 
- export default CardListCell;
+export default CardListCell;

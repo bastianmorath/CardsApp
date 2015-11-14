@@ -5,19 +5,19 @@
  * @flow
  */
 import React from 'react-native';
- const {
+const {
    StyleSheet,
  } = React;
 
  /**
  * This component handles styles for various classes
  */
-var Styles = StyleSheet.create({
+const CardListStyles = StyleSheet.create({
 
 // TO DO: Set full height of view
   listview: {
     flex: 1,
-    backgroundColor: 'lightgrey'
+    backgroundColor: 'lightgrey',
   },
   // style properties of a CardListCell
   cell: {
@@ -30,14 +30,14 @@ var Styles = StyleSheet.create({
   },
 
   // style properties of a text-element in a cardListCell
-  //ToDo: Align Text vertically
+  // TODO: Align Text vertically
   text: {
     fontSize: 20,
     // royal blue text color
     color: '107896',
     textAlign: 'center',
     paddingTop: 40,
-  }
+  },
 });
 
-export default Styles;
+export default CardListStyles;
