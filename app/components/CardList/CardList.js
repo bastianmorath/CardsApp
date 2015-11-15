@@ -8,7 +8,8 @@
 // TODO: format JSX correctly
 // TODO: order of functions in a react component. DONE
 // TODO: Rename Styles.js file to something like "CardListStyles" DONE
-// TODO: fix propTypes: this page of the documentation contains all the possible value for PropType: https://facebook.github.io/react/docs/reusable-components.htmlÎ
+// TODO: fix propTypes: this page of the documentation contains
+//       all the possible value for PropType: https://facebook.github.io/react/docs/reusable-components.htmlÎ
 import React from 'react-native';
 import CardListCell from './CardListCell';
 import Styles from './CardListStyles.js';
@@ -27,8 +28,6 @@ const CardList = React.createClass({
   displayName: 'CardList',
 
   // add flashcards to the datasource of ListView
-
-
   propTypes: {
     flashcards: PropTypes.array,
   },
@@ -50,8 +49,8 @@ const CardList = React.createClass({
 
   render() {
     return (
-      <View >
-      <ListView style= {Styles.listview}
+      <View style={Styles.fillListViewContainer}>
+      <ListView style={Styles.listview}
       dataSource ={this.state.dataSource}
       renderRow= {this.renderRow}
       />

@@ -12,12 +12,19 @@ const {
  /**
  * This component handles styles for various classes
  */
+
 const CardListStyles = StyleSheet.create({
 
-// TO DO: Set full height of view
+// TODO: Set full height of view
   listview: {
+    backgroundColor: 'green',
     flex: 1,
-    backgroundColor: 'lightgrey',
+  },
+
+  fillListViewContainer: {
+    flex: 1,
+    alignItems: 'stretch',
+    marginTop: 20,
   },
   // style properties of a CardListCell
   cell: {
@@ -25,8 +32,9 @@ const CardListStyles = StyleSheet.create({
     backgroundColor: 'white',
     marginLeft: 6,
     marginRight: 6,
-    marginTop: 3,
-    marginBottom: 3,
+    marginTop: 6,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   // style properties of a text-element in a cardListCell
@@ -35,8 +43,6 @@ const CardListStyles = StyleSheet.create({
     fontSize: 20,
     // royal blue text color
     color: '107896',
-    textAlign: 'center',
-    paddingTop: 40,
   },
 });
 
