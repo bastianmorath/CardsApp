@@ -4,12 +4,6 @@
  *
  * @flow
  */
-// TODO: fix all eslint errors in this file. DONE
-// TODO: format JSX correctly
-// TODO: order of functions in a react component. DONE
-// TODO: Rename Styles.js file to something like "CardListStyles" DONE
-// TODO: fix propTypes: this page of the documentation contains
-//       all the possible value for PropType: https://facebook.github.io/react/docs/reusable-components.htmlÎ
 import React from 'react-native';
 import CardListCell from './CardListCell';
 import Styles from './CardListStyles.js';
@@ -49,11 +43,12 @@ const CardList = React.createClass({
 
   render() {
     return (
-      <View style={Styles.fillListViewContainer}>
-      <ListView style={Styles.listview}
-      dataSource ={this.state.dataSource}
-      renderRow= {this.renderRow}
-      />
+      <View style={Styles.listViewHolder}>
+        <ListView
+          style={Styles.listView}
+          dataSource={this.state.dataSource}
+          renderRow={this.renderRow}
+        />
       </View>
     );
   },

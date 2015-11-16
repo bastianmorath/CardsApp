@@ -9,40 +9,38 @@ const {
    StyleSheet,
  } = React;
 
+const kMarginTop = 15;
+const kCellHeight = 100;
+const kCellMargin = 6;
+
  /**
- * This component handles styles for various classes
+ * This StyleSheet handles styles for CardList components.
  */
-
 const CardListStyles = StyleSheet.create({
-
-// TODO: Set full height of view
-  listview: {
+  listViewHolder: {
     backgroundColor: 'green',
     flex: 1,
   },
 
-  fillListViewContainer: {
+  listView: {
     flex: 1,
-    alignItems: 'stretch',
-    marginTop: 20,
+    marginTop: kMarginTop,
   },
+
   // style properties of a CardListCell
   cell: {
-    height: 100,
+    height: kCellHeight,
     backgroundColor: 'white',
-    marginLeft: 6,
-    marginRight: 6,
-    marginTop: 6,
+    margin: kCellMargin,
+    marginBottom: 0,
     justifyContent: 'center',
     alignItems: 'center',
   },
 
   // style properties of a text-element in a cardListCell
-  // TODO: Align Text vertically
   text: {
     fontSize: 20,
-    // royal blue text color
-    color: '107896',
+    color: '107896',  // royal blue text color
   },
 });
 

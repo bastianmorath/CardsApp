@@ -6,7 +6,6 @@
 import React from 'react-native';
 const {
   AppRegistry,
-  View,
 } = React;
 import CardListContainer from './app/components/CardList/CardListContainer';
 
@@ -17,9 +16,7 @@ const CardsApp = React.createClass({
   displayName: 'CardsAppApplicationAndroid',
   render() {
     return (
-      <View>
-        <CardListContainer />
-      </View>
+      <CardListContainer />
     );
   },
 });
