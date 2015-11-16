@@ -4,12 +4,14 @@
  *
  * @flow
  */
-import _ from 'lodash';
 import React from 'react-native';
+import CardListCell from './CardListCell';
+import Styles from './CardListStyles.js';
+
 const {
   PropTypes,
   View,
-  Text,
+  ListView,
 } = React;
 
 /**
@@ -18,18 +20,37 @@ const {
  */
 const CardList = React.createClass({
   displayName: 'CardList',
+
+  // add flashcards to the datasource of ListView
   propTypes: {
     flashcards: PropTypes.array,
   },
 
-  render() {
-    const count = _.size(this.props.flashcards);
+  getInitialState() {
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.frontText !== r2.frontText});
+    return {
+      dataSource: ds.cloneWithRows(this.props.flashcards),
+    };
+  },
+
+  renderRow(rowData) {
     return (
-      <View style={{height: 100, backgroundColor: 'yellow', padding: 10}}>
-        <Text style={{fontSize: 16, marginTop: 20}}>Here we would display a list of: {count} flashcards.</Text>
+      <CardListCell flashcard={rowData}/>
+    );
+  },
+
+  render() {
+    return (
+      <View style={Styles.listViewHolder}>
+        <ListView
+          style={Styles.listView}
+          dataSource={this.state.dataSource}
+          renderRow={this.renderRow}
+        />
       </View>
     );
   },
+
 });
 
 export default CardList;

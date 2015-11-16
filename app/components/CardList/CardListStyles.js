@@ -1,0 +1,49 @@
+/**
+ * @author    ::  Bastian Morath and Lukas Reichart
+ * @copyright ::  Bastian Morath and Lukas Reichart
+ *
+ * @flow
+ */
+import React from 'react-native';
+const {
+   StyleSheet,
+ } = React;
+import colors from '../../constants/colors';
+import fonts from '../../constants/fonts';
+
+const kMarginTop = 32;
+const kCellHeight = 120;
+const kCellMarginVertical = 3;
+const kCellMarginSide = 10;
+
+ /**
+ * This StyleSheet handles styles for CardList components.
+ */
+const CardListStyles = StyleSheet.create({
+  listViewHolder: {
+    backgroundColor: colors.LightGrey,
+    flex: 1,
+  },
+
+  listView: {
+    flex: 1,
+    marginTop: kMarginTop,
+  },
+
+  // style properties of a CardListCell
+  cell: {
+    height: kCellHeight,
+    backgroundColor: 'white',
+    marginBottom: kCellMarginVertical,
+    marginTop: 0,
+    marginRight: kCellMarginSide,
+    marginLeft: kCellMarginSide,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  // style properties of a text-element in a cardListCell
+  text: fonts.text,
+});
+
+export default CardListStyles;
