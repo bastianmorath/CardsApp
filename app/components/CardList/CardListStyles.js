@@ -8,17 +8,20 @@ import React from 'react-native';
 const {
    StyleSheet,
  } = React;
+import colors from '../../constants/colors';
+import fonts from '../../constants/fonts';
 
-const kMarginTop = 15;
-const kCellHeight = 100;
-const kCellMargin = 6;
+const kMarginTop = 32;
+const kCellHeight = 120;
+const kCellMarginVertical = 3;
+const kCellMarginSide = 10;
 
  /**
  * This StyleSheet handles styles for CardList components.
  */
 const CardListStyles = StyleSheet.create({
   listViewHolder: {
-    backgroundColor: 'green',
+    backgroundColor: colors.LightGrey,
     flex: 1,
   },
 
@@ -31,17 +34,16 @@ const CardListStyles = StyleSheet.create({
   cell: {
     height: kCellHeight,
     backgroundColor: 'white',
-    margin: kCellMargin,
-    marginBottom: 0,
+    marginBottom: kCellMarginVertical,
+    marginTop: 0,
+    marginRight: kCellMarginSide,
+    marginLeft: kCellMarginSide,
     justifyContent: 'center',
     alignItems: 'center',
   },
 
   // style properties of a text-element in a cardListCell
-  text: {
-    fontSize: 20,
-    color: '107896',  // royal blue text color
-  },
+  text: fonts.text,
 });
 
 export default CardListStyles;
