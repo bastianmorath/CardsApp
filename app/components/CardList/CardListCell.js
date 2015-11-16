@@ -19,13 +19,13 @@ const {
 
 const CardListCell = React.createClass({
   propTypes: {
-    flashcard: PropTypes.object,
+    flashcard: PropTypes.object.isRequired,
   },
 
   render() {
     return (
         <View style={Styles.cell}>
-          <Text style={Styles.text}>{this.props.flashcard.frontSide}</Text>
+          <Text style={Styles.text}>{this.props.flashcard.frontText}</Text>
         </View>
     );
   },

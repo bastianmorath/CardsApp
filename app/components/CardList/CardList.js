@@ -27,9 +27,7 @@ const CardList = React.createClass({
   },
 
   getInitialState() {
-       // TODO: the function rowHasChanged is by ListView to determin, if the data of a row hasChanged.
-       // r1 and r2 are data objects from the this.props.flashcards array. So we need to compare properties not the object.
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.fronttext !== r2.fronttext});
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.frontText !== r2.frontText});
     return {
       dataSource: ds.cloneWithRows(this.props.flashcards),
     };
