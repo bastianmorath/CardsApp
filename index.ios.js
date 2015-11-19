@@ -17,7 +17,7 @@ const CardsApp = React.createClass({
   displayName: 'CardsAppApplicationiOS',
   render() {
     return (
-      <CardDetailContainer />
+      <CardDetailContainer/>
     );
   },
 });

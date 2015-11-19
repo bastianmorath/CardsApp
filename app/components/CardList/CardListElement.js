@@ -13,11 +13,11 @@ const {
 } = React;
 
 /**
- * A CardListCell component is responsible to display the fronttext of a
+ * A cardListElement component is responsible to display the fronttext of a
  * flashcard, used in a ListView
  */
 
-const CardListCell = React.createClass({
+const cardListElement = React.createClass({
   propTypes: {
     flashcard: PropTypes.object.isRequired,
   },
@@ -31,4 +31,4 @@ const CardListCell = React.createClass({
   },
 });
 
-export default CardListCell;
+export default cardListElement;

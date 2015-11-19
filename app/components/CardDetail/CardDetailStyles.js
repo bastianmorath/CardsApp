@@ -5,43 +5,49 @@
  * @flow
  */
 import React from 'react-native';
+import colors from '../../constants/colors';
+import fonts from '../../constants/fonts';
+
 const {
    StyleSheet,
 } = React;
 
+const kMarginTop = 32;
+const kCellMarginVertical = 3;
+const kCellMarginSide = 10;
+
 const CardDetailStyles = StyleSheet.create({
-  listView: {
-    backgroundColor: 'greyColor',
-    flex: 1,
-  },
 
   scrollViewHolder: {
     flex: 1,
+    backgroundColor: colors.Grey,
+  },
+
+  listView: {
+    flex: 1,
+    marginTop: kMarginTop,
+    backgroundColor: colors.White,
+    margin: kCellMarginSide,
   },
 
   detailtextview: {
     flex: 1,
-    backgroundColor: 'greyColor',
+    height: 250,
     justifyContent: 'center',
     alignItems: 'center',
-    marginLeft: 6,
-    marginRight: 6,
-    marginTop: 6,
-    marginBottom: 6,
+    backgroundColor: 'white',
   },
-  text: {
-    fontSize: 20,
-    color: 'red',
-  },
+
   separator: {
     height: 1,
-    marginRight: 10,
-    marginLeft: 10,
-    backgroundColor: '#CCCCCC',
+    marginRight: kCellMarginSide + 10,
+    marginLeft: kCellMarginSide + 10,
+    backgroundColor: colors.Grey,
   },
-  fillListViewContainer: {
-    marginTop: 20,
-  },
+
+
+  // style properties of a text-element in a CardDetailTextView
+  text: fonts.text,
 });
 
 export default CardDetailStyles;

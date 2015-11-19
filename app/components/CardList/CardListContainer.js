@@ -4,8 +4,8 @@
  *
  * @flow
  */
-import React from 'react-native';
 
+import React from 'react-native';
 import CardList from './CardList';
 import flashcards from '../../../test/mock/flashcard';
 
