@@ -13,8 +13,11 @@ const {
 } = React;
 
 const kMarginTop = 32;
-const kCellMarginVertical = 3;
 const kCellMarginSide = 10;
+
+/**
+* This StyleSheet handles styles for CardDetail components.
+*/
 
 const CardDetailStyles = StyleSheet.create({
 
@@ -30,6 +33,7 @@ const CardDetailStyles = StyleSheet.create({
     margin: kCellMarginSide,
   },
 
+// Stayle properties of a CardDetail TextView
   detailtextview: {
     flex: 1,
     height: 250,
@@ -38,13 +42,14 @@ const CardDetailStyles = StyleSheet.create({
     backgroundColor: 'white',
   },
 
+// Style properties of the seperator that seperates the backText and the
+// frontText of the flashCard in CardDetail
   separator: {
     height: 1,
     marginRight: kCellMarginSide + 10,
     marginLeft: kCellMarginSide + 10,
     backgroundColor: colors.Grey,
   },
-
 
   // style properties of a text-element in a CardDetailTextView
   text: fonts.text,

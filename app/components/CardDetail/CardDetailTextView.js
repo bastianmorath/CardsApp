@@ -16,7 +16,8 @@ const {
 
 /**
  * A CardDetailTextView component is responible to display a given text
- * of a flashcard, used in a ListView in CardDetail.
+ * of a flashcard, used CardDetail to display the front- and backText of
+ * a flashcard.
  */
 
 const CardDetailTextView = React.createClass({
