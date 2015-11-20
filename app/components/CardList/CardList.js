@@ -5,8 +5,9 @@
  * @flow
  */
 import React from 'react-native';
-import CardListCell from './CardListCell';
+import CardListElement from './CardListElement';
 import Styles from './CardListStyles.js';
+import CustomPropTypes from '../../constants/CustomPropTypes';
 
 const {
   PropTypes,
@@ -23,7 +24,7 @@ const CardList = React.createClass({
 
   // add flashcards to the datasource of ListView
   propTypes: {
-    flashcards: PropTypes.array,
+    flashcards: PropTypes.arrayOf(CustomPropTypes.flashcard),
   },
 
   getInitialState() {
@@ -35,7 +36,7 @@ const CardList = React.createClass({
 
   renderRow(rowData) {
     return (
-      <CardListCell flashcard={rowData}/>
+      <CardListElement flashcard={rowData}/>
     );
   },
 
