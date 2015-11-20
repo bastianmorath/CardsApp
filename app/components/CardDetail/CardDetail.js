@@ -8,7 +8,7 @@
 import React from 'react-native';
 import Styles from './CardDetailStyles';
 import CardDetailTextView from './CardDetailTextView';
-import CardPropTypes from '../../constants/CardPropTypes';
+import CustomPropTypes from '../../constants/CustomPropTypes';
 
 const {
   View,
@@ -23,7 +23,7 @@ const CardDetail = React.createClass({
   displayName: 'CardDetail',
 
   propTypes: {
-    flashcard: CardPropTypes.flashcard,
+    flashcard: CustomPropTypes.flashcard,
   },
 
   render() {

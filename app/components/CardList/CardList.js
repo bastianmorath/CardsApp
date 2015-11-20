@@ -7,7 +7,7 @@
 import React from 'react-native';
 import CardListElement from './CardListElement';
 import Styles from './CardListStyles.js';
-import CardPropTypes from '../../constants/CardPropTypes';
+import CustomPropTypes from '../../constants/CustomPropTypes';
 
 const {
   PropTypes,
@@ -24,7 +24,7 @@ const CardList = React.createClass({
 
   // add flashcards to the datasource of ListView
   propTypes: {
-    flashcards: PropTypes.arrayOf(CardPropTypes.flashcard),
+    flashcards: PropTypes.arrayOf(CustomPropTypes.flashcard),
   },
 
   getInitialState() {
@@ -34,7 +34,7 @@ const CardList = React.createClass({
     };
   },
 
-  renderRow(rowData = CardPropTypes.flashcard) {
+  renderRow(rowData) {
     return (
       <CardListElement flashcard={rowData}/>
     );

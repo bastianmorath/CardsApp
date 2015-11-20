@@ -5,14 +5,17 @@
  * @flow
  */
 
+ /** The CustomPropTypes is responsible
+  * to define custom propTypes
+  */
+
 import React from 'react-native';
 
 const {
   PropTypes,
 } = React;
 
-
-const CardPropTypes = {
+const CustomPropTypes = {
   flashcard:
     PropTypes.shape({
       id: PropTypes.string,
@@ -21,4 +24,4 @@ const CardPropTypes = {
     }),
 };
 
-export default CardPropTypes;
+export default CustomPropTypes;
