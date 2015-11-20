@@ -7,15 +7,15 @@ module.exports = function GruntInit(grunt) {
   require('load-grunt-tasks')(grunt);
 
   grunt.initConfig({
-    // mochaTest: {
-    //   test: {
-    //     options: {
-    //       clearRequireCache: true,
-    //       require: 'babel/register'
-    //     },
-    //     src: ['test/*.js']
-    //   }
-    // },
+    mochaTest: {
+      test: {
+        options: {
+          clearRequireCache: true,
+          require: 'babel/register',
+        },
+        src: ['test/data/*.js'],
+      },
+    },
 
     flow: {
       app: {
@@ -48,6 +48,7 @@ module.exports = function GruntInit(grunt) {
     },
   });
 
-  grunt.registerTask('test', ['eslint', 'flow']);
+  grunt.registerTask('mocha', ['mochaTest'] );
+  grunt.registerTask('test', ['eslint', 'mochaTest']);
   grunt.registerTask('default', ['eslint']);
 };
