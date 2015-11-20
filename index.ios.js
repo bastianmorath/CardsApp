@@ -7,7 +7,8 @@ import React from 'react-native';
 const {
   AppRegistry,
 } = React;
-import CardListContainer from './app/components/CardList/CardListContainer';
+// import CardListContainer from './app/components/CardList/CardListContainer';
+import CardDetailContainer from './app/components/CardDetail/CardDetailContainer';
 
 /**
  * CardApp is the main iOS Component of the CardApps application.
@@ -16,7 +17,7 @@ const CardsApp = React.createClass({
   displayName: 'CardsAppApplicationiOS',
   render() {
     return (
-      <CardListContainer />
+      <CardDetailContainer/>
     );
   },
 });

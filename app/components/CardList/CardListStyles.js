@@ -5,11 +5,12 @@
  * @flow
  */
 import React from 'react-native';
+import colors from '../../constants/colors';
+import fonts from '../../constants/fonts';
+
 const {
    StyleSheet,
  } = React;
-import colors from '../../constants/colors';
-import fonts from '../../constants/fonts';
 
 const kMarginTop = 32;
 const kCellHeight = 120;
@@ -30,7 +31,7 @@ const CardListStyles = StyleSheet.create({
     marginTop: kMarginTop,
   },
 
-  // style properties of a CardListCell
+  // style properties of a CardListElement
   cell: {
     height: kCellHeight,
     backgroundColor: 'white',
@@ -42,7 +43,7 @@ const CardListStyles = StyleSheet.create({
     alignItems: 'center',
   },
 
-  // style properties of a text-element in a cardListCell
+  // style properties of a text-element in a CardListElement
   text: fonts.text,
 });
 

@@ -5,7 +5,7 @@
  * @flow
  */
 import React from 'react-native';
-import CardListCell from './CardListCell';
+import CardListElement from './CardListElement';
 import Styles from './CardListStyles.js';
 
 const {
@@ -35,7 +35,7 @@ const CardList = React.createClass({
 
   renderRow(rowData) {
     return (
-      <CardListCell flashcard={rowData}/>
+      <CardListElement flashcard={rowData}/>
     );
   },
 
