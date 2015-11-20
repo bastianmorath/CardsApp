@@ -4,6 +4,7 @@
  *
  * @flow
  */
+import _ from 'lodash';
 import React from 'react-native';
 import colors from '../../constants/colors';
 import fonts from '../../constants/fonts';
@@ -29,16 +30,13 @@ const CardDetailStyles = StyleSheet.create({
   listView: {
     flex: 1,
     marginTop: kMarginTop,
-    backgroundColor: colors.White,
+    overflow: 'visible',
     margin: kCellMarginSide,
+    backgroundColor: colors.Grey,
   },
 
 // Stayle properties of a CardDetail TextView
-  detailtextview: {
-    flex: 1,
-    height: 250,
-    justifyContent: 'center',
-    alignItems: 'center',
+  detailTextView: {
     backgroundColor: 'white',
   },
 
@@ -46,13 +44,17 @@ const CardDetailStyles = StyleSheet.create({
 // frontText of the flashCard in CardDetail
   separator: {
     height: 1,
-    marginRight: kCellMarginSide + 10,
-    marginLeft: kCellMarginSide + 10,
-    backgroundColor: colors.Grey,
+    backgroundColor: 'black',
+    borderRightWidth: kCellMarginSide + 10,
+    borderLeftWidth: kCellMarginSide + 10,
+    borderLeftColor: 'white',
+    borderRightColor: 'white',
   },
 
   // style properties of a text-element in a CardDetailTextView
-  text: fonts.text,
+  textBox: _.assign({
+    margin: 20,
+  }, fonts.text ),
 });
 
 export default CardDetailStyles;

@@ -19,16 +19,15 @@ const {
  * of a flashcard, used CardDetail to display the front- and backText of
  * a flashcard.
  */
-
 const CardDetailTextView = React.createClass({
   propTypes: {
-    text: PropTypes.object,
+    text: PropTypes.string,
   },
 
   render() {
     return (
-      <View style={Styles.detailtextview}>
-        <Text style={Styles.text}>{this.props.text}</Text>
+      <View style={Styles.detailTextView}>
+        <Text style={Styles.textBox}>{this.props.text}</Text>
       </View>
     );
   },

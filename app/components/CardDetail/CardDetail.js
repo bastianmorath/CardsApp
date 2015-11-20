@@ -5,8 +5,6 @@
  * @flow
  */
 
-// TODO: The ListView doesn't fill the entire screen, just as much as it needs to display the text.
-
 import React from 'react-native';
 import Styles from './CardDetailStyles.js';
 import CardDetailTextView from './CardDetailTextView';
@@ -25,23 +23,25 @@ const CardDetail = React.createClass({
   displayName: 'CardDetail',
 
   propTypes: {
-    flashcard: PropTypes.arrayOf(PropTypes.object),
+    flashcard: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string,
+      frontText: PropTypes.string,
+      backText: PropTypes.string,
+    })),
   },
 
   render() {
-    const flashcard = this.props.flashcard;
+    const flashcard = this.props.flashcard || {};
     return (
     // The ScrollView holds two CardDetailTextViews that each display the
     // frontText or backText, respectively.
-      <View style={Styles.scrollViewHolder}>
+    <View style={Styles.scrollViewHolder}>
       <ScrollView style={Styles.listView}>
         <CardDetailTextView
-          style={Styles.carddetailtextview}
           text={flashcard.frontText}
         />
         <View style={Styles.separator}/>
         <CardDetailTextView
-          style={Styles.carddetailtextview}
           text={flashcard.backText}
         />
       </ScrollView>
