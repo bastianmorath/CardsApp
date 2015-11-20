@@ -7,6 +7,6 @@
  * @flow
  */
 
-const flashcards = ['flashcards'];
+const flashcardsMap = ['flashcards'];
 
-export default { flashcards };
+export default { flashcardsMap };
