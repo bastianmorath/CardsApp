@@ -6,8 +6,9 @@
  */
 import React from 'react-native';
 import Styles from './CardListStyles.js';
+import CustomPropTypes from '../../constants/CustomPropTypes';
+
 const {
-  PropTypes,
   View,
   Text,
 } = React;
@@ -19,13 +20,14 @@ const {
 
 const cardListElement = React.createClass({
   propTypes: {
-    flashcard: PropTypes.object.isRequired,
+    flashcard: CustomPropTypes.flashcard,
   },
 
   render() {
+    const flashcard = this.props.flashcard || {};
     return (
         <View style={Styles.cell}>
-          <Text style={Styles.text}>{this.props.flashcard.frontText}</Text>
+          <Text style={Styles.text}>{flashcard.frontText}</Text>
         </View>
     );
   },
