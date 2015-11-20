@@ -34,7 +34,7 @@ const CardList = React.createClass({
     };
   },
 
-  renderRow(rowData) {
+  renderRow(rowData = CardPropTypes.flashcard) {
     return (
       <CardListElement flashcard={rowData}/>
     );

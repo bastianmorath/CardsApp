@@ -24,9 +24,11 @@ const cardListElement = React.createClass({
   },
 
   render() {
+    const flashcard = this.props.flashcard || {};
+
     return (
         <View style={Styles.cell}>
-          <Text style={Styles.text}>{this.propTypes.flashcard.frontText}</Text>
+          <Text style={Styles.text}>{flashcard.frontText}</Text>
         </View>
     );
   },
