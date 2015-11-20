@@ -19,12 +19,11 @@ const kCellMarginSide = 10;
 /**
 * This StyleSheet handles styles for CardDetail components.
 */
-
 const CardDetailStyles = StyleSheet.create({
 
   scrollViewHolder: {
     flex: 1,
-    backgroundColor: colors.Grey,
+    backgroundColor: colors.LightGrey,
   },
 
   listView: {
@@ -32,7 +31,6 @@ const CardDetailStyles = StyleSheet.create({
     marginTop: kMarginTop,
     overflow: 'visible',
     margin: kCellMarginSide,
-    backgroundColor: colors.Grey,
   },
 
 // Stayle properties of a CardDetail TextView

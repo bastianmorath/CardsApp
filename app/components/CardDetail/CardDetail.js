@@ -15,19 +15,18 @@ const {
   ScrollView,
 } = React;
 
-/** The CardDetail is responsible
- * for displaying the front and backside of a flashcard.
+/**
+ * The CardDetail is responsible for displaying the front and backside of a flashcard.
  */
-
 const CardDetail = React.createClass({
   displayName: 'CardDetail',
 
   propTypes: {
-    flashcard: PropTypes.arrayOf(PropTypes.shape({
+    flashcard: PropTypes.shape({
       id: PropTypes.string,
       frontText: PropTypes.string,
       backText: PropTypes.string,
-    })),
+    }),
   },
 
   render() {
