@@ -7,6 +7,7 @@
 import React from 'react-native';
 import CardListElement from './CardListElement';
 import Styles from './CardListStyles.js';
+import CardPropTypes from '../../constants/CardPropTypes';
 
 const {
   PropTypes,
@@ -23,7 +24,7 @@ const CardList = React.createClass({
 
   // add flashcards to the datasource of ListView
   propTypes: {
-    flashcards: PropTypes.array,
+    flashcards: PropTypes.arrayOf(CardPropTypes.flashcard),
   },
 
   getInitialState() {

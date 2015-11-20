@@ -6,27 +6,24 @@
  */
 
 import React from 'react-native';
-import Styles from './CardDetailStyles.js';
+import Styles from './CardDetailStyles';
 import CardDetailTextView from './CardDetailTextView';
+import CardPropTypes from '../../constants/CardPropTypes';
 
 const {
-  PropTypes,
   View,
   ScrollView,
 } = React;
 
-/**
- * The CardDetail is responsible for displaying the front and backside of a flashcard.
+/** The CardDetail is responsible
+ * for displaying the front and backside of a flashcard.
  */
+
 const CardDetail = React.createClass({
   displayName: 'CardDetail',
 
   propTypes: {
-    flashcard: PropTypes.shape({
-      id: PropTypes.string,
-      frontText: PropTypes.string,
-      backText: PropTypes.string,
-    }),
+    flashcard: CardPropTypes.flashcard,
   },
 
   render() {
