@@ -19,7 +19,7 @@ const FlashCardLibrary = {
    * At the moment this only passes our mock data.
    * @return {Promise} [description]
    */
-  getFlashcards() {
+  fetchFlashcards() {
     return new Promise( (resolve) => {
       setTimeout( () => {
         resolve( _flashcards );

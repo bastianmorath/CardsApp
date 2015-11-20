@@ -17,7 +17,7 @@ export default {
    * Fetches flashcards from the database and dispatches: RECEIVE_FLASHCARDS, when finished.
    */
   fetchFlashcards() {
-    return FlashCardLibrary.getFlashcards().then( flashcards => {
+    return FlashCardLibrary.fetchFlashcards().then( flashcards => {
       reactor.dispatch(RECEIVE_FLASHCARDS, {flashcards} );
     });
   },
