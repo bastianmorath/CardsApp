@@ -7,10 +7,13 @@
 import React from 'react-native';
 import Styles from './CardListStyles.js';
 import CustomPropTypes from '../../constants/CustomPropTypes';
+import Router from 'react-native-router-flux';
+const Actions = Router.Actions;
 
 const {
   View,
   Text,
+  TouchableHighlight,
 } = React;
 
 /**
@@ -25,12 +28,17 @@ const cardListElement = React.createClass({
 
   render() {
     const flashcard = this.props.flashcard || {};
+
     return (
+      <TouchableHighlight onPress={() => Actions.detailTextView}>
         <View style={Styles.cell}>
           <Text style={Styles.text}>{flashcard.frontText}</Text>
         </View>
+      </TouchableHighlight>
+
     );
   },
+
 });
 
 export default cardListElement;
