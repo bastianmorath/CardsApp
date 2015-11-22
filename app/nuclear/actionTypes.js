@@ -12,4 +12,5 @@
 
  export default keyMirror({
    RECEIVE_FLASHCARDS: null,
+   CREATE_FLASHCARDS: null,
  });

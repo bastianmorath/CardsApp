@@ -9,9 +9,17 @@ import {Store, toImmutable} from 'nuclear-js';
 import actionTypes from './actionTypes';
 const {
   RECEIVE_FLASHCARDS,
+  CREATE_FLASHCARDS,
 } = actionTypes;
 
 function receiveFlashcards(state, { flashcards } ) {
+  const newFlashcards = toImmutable(flashcards)
+    .toMap()
+    .mapKeys( (k, v) => v.get('id') );
+  return state.merge( newFlashcards );
+}
+
+function createFlashcards(state, { flashcards } ) {
   const newFlashcards = toImmutable(flashcards)
     .toMap()
     .mapKeys( (k, v) => v.get('id') );
@@ -25,5 +33,6 @@ export default Store({  // eslint-disable-line new-cap
 
   initialize() {
     this.on(RECEIVE_FLASHCARDS, receiveFlashcards );
+    this.on(CREATE_FLASHCARDS, createFlashcards );
   },
 });
