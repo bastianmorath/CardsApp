@@ -28,6 +28,7 @@ const CardListStyles = StyleSheet.create({
 
   listView: {
     flex: 1,
+    overflow: 'visible',
     marginTop: kMarginTop,
   },
 

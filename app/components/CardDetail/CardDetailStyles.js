@@ -4,6 +4,7 @@
  *
  * @flow
  */
+
 import _ from 'lodash';
 import React from 'react-native';
 import colors from '../../constants/colors';
