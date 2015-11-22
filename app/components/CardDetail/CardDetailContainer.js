@@ -5,7 +5,10 @@
  * @flow
  */
 
+import _ from 'lodash';
 import React from 'react-native';
+const { PropTypes } = React;
+
 import flashcards from '../../../test/mock/flashcard';
 import CardDetail from './CardDetail.js';
 
@@ -15,10 +18,14 @@ import CardDetail from './CardDetail.js';
   */
 const CardDetailContainer = React.createClass({
   displayName: 'CardDetailContainer',
+  propTypes: {
+    flashcardId: PropTypes.string,
+  },
 
   render() {
+    const flashcard = _.first( _.where(flashcards, {id: this.props.flashcardId} ));
     return (
-      <CardDetail flashcard={flashcards[0]}/>
+      <CardDetail flashcard={flashcard}/>
     );
   },
 });
