@@ -4,24 +4,24 @@
  *
  * @flow
  */
+
 import React from 'react-native';
 import Styles from './CardListStyles.js';
 import CustomPropTypes from '../../constants/CustomPropTypes';
 import Router from 'react-native-router-flux';
-const Actions = Router.Actions;
+const RouterActions = Router.Actions;
 
 const {
   View,
   Text,
-  TouchableHighlight,
+  TouchableWithoutFeedback,
 } = React;
 
 /**
  * A cardListElement component is responsible to display the fronttext of a
  * flashcard, used in a ListView
  */
-
-const cardListElement = React.createClass({
+const CardListElement = React.createClass({
   propTypes: {
     flashcard: CustomPropTypes.flashcard,
   },
@@ -30,15 +30,14 @@ const cardListElement = React.createClass({
     const flashcard = this.props.flashcard || {};
 
     return (
-      <TouchableHighlight onPress={() => Actions.detailTextView}>
+      <TouchableWithoutFeedback
+        onPress={() => RouterActions.cardDetail({flashcardId: flashcard.id}) } >
         <View style={Styles.cell}>
           <Text style={Styles.text}>{flashcard.frontText}</Text>
         </View>
-      </TouchableHighlight>
-
+      </TouchableWithoutFeedback>
     );
   },
-
 });
 
-export default cardListElement;
+export default CardListElement;
