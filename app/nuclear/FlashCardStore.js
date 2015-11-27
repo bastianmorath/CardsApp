@@ -5,11 +5,13 @@
  * @flow
  */
 
+import _ from 'lodash';
 import {Store, toImmutable} from 'nuclear-js';
 import actionTypes from './actionTypes';
 const {
   RECEIVE_FLASHCARDS,
   CREATE_FLASHCARDS,
+  DELETE_FLASHCARDS,
 } = actionTypes;
 
 function receiveFlashcards(state, { flashcards } ) {
@@ -26,6 +28,14 @@ function createFlashcards(state, { flashcards } ) {
   return state.merge( newFlashcards );
 }
 
+function deleteFlashcards(state, { flashcardIds } ) {
+  return state.withMutations( (map) => {
+    _.each( flashcardIds, (flashcardId) => {
+      map.remove(flashcardId);
+    });
+  });
+}
+
 export default Store({  // eslint-disable-line new-cap
   getInitialState() {
     return toImmutable({});
@@ -34,5 +44,6 @@ export default Store({  // eslint-disable-line new-cap
   initialize() {
     this.on(RECEIVE_FLASHCARDS, receiveFlashcards );
     this.on(CREATE_FLASHCARDS, createFlashcards );
+    this.on(DELETE_FLASHCARDS, deleteFlashcards );
   },
 });

@@ -48,7 +48,7 @@ describe('modules/Flashcard', () => {
         });
       });
     });
-    describe('#addFlashcard', () => {
+    describe('#addFlashcard(s)', () => {
       it('should create a single flashcard', (done) => {
         const flashcardToCreate = { frontText: 'Here is some text' };
         Project.actions.addFlashcard(flashcardToCreate).then( () => {
@@ -68,7 +68,7 @@ describe('modules/Flashcard', () => {
           { frontTExt: 'frontText 4' },
         ];
 
-        Project.actions.addFlashcard( flashcardsToCreate ).then( () => {
+        Project.actions.addFlashcards( flashcardsToCreate ).then( () => {
           const flashcardsMap = reactor.evaluateToJS( Project.getters.flashcardsMap );
           _.each( flashcardsToCreate, (flashcardToCreate) => {
             const flashcard = _.first(_.where(flashcardsMap, flashcardToCreate));
