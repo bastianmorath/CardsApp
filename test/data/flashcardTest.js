@@ -22,12 +22,14 @@ describe('modules/Flashcard', () => {
     // stub all the API function we use.
     sinon.stub(Api, 'fetchFlashcards', MockApi.fetchFlashcards);
     sinon.stub(Api, 'createFlashcards', MockApi.createFlashcards );
+    sinon.stub(Api, 'updateFlashcards', MockApi.updateFlashcards );
     sinon.stub(Api, 'deleteFlashcards', MockApi.deleteFlashcards );
   });
   after( () => {
     // restore all of our stubs.
     Api.fetchFlashcards.restore();
     Api.createFlashcards.restore();
+    Api.updateFlashcards.restore();
     Api.deleteFlashcards.restore();
   });
   afterEach( () => {
