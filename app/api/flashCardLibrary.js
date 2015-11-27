@@ -25,7 +25,7 @@ const FlashCardLibrary = {
    * At the moment this only passes our mock data.
    * @return {Promise}
    */
-  fetchFlashcards() {
+  fetchFlashcards(): Promise {
     return new Promise( (resolve) => {
       setTimeout( () => {
         resolve( _flashcards );
@@ -39,7 +39,7 @@ const FlashCardLibrary = {
    * @param  {array|object} flashcards to create.
    * @return {Promise}
    */
-  createFlashcards( flashcards ) {
+  createFlashcards( flashcards:Array<Object> ): Promise {
     if (!flashcards) {
       // TODO: handle the error here.
       return Promise.reject();
@@ -54,10 +54,32 @@ const FlashCardLibrary = {
       setTimeout( () => {
         _.each( flashcardsToCreate, (flashcard) => {
           flashcard.id = idCounter.toString();
+          _flashcards.push( flashcard );
           idCounter++;
         });
         resolve( flashcardsToCreate );
       }, TIMEOUT );
+    });
+  },
+
+  /**
+   * API method: batch deletes flashcards from the database identified by the passed
+   * array of ids.
+   */
+  deleteFlashcards( flashcardIdsToDelete: Array<string> ): Promise {
+    if (!flashcardIdsToDelete) {
+      // TODO: hanlde the error here.
+      return Promise.reject();
+    }
+
+    return new Promise( (resolve) => {
+      setTimeout( () => {
+        // delete all the flashcards from the in memory map.
+        _.remove( _flashcards, (flashcard) => {
+          return _.find(flashcardIdsToDelete, flashcard.id );
+        });
+        resolve(flashcardIdsToDelete);
+      });
     });
   },
 };
