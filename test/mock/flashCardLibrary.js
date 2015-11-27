@@ -7,7 +7,7 @@
 
 const TIMEOUT = 50;
 import _ from 'lodash';
-import _flashcards from './flashcard';
+import _flashcards from '../../test/mock/flashcard';
 let idCounter = 0;
 _.each( _flashcards, (flashcard) => {
   flashcard.id = idCounter.toString();
@@ -15,15 +15,12 @@ _.each( _flashcards, (flashcard) => {
 });
 
 /**
- * Mock FlashCardLibrary, that should define the same function as the real one.
- * Used in the unit tests for nuclear-js.
+ * Mock FlashCardLibrary should define all the methods the original defines.
  * @type {Object}
  */
 const FlashCardLibrary = {
   /**
    * Fetches all flashcards of a user from the database.
-   * At the moment this only passes our mock data.
-   * @return {Promise}
    */
   fetchFlashcards(): Promise {
     return new Promise( (resolve) => {
@@ -34,20 +31,12 @@ const FlashCardLibrary = {
   },
 
   /**
-   * Takes a single data object or array of objects and create new flashcards entry
-   * in the database.
-   * @param  {array|object} flashcards to create.
-   * @return {Promise}
+   * API method: batch creates flashcards in the database.
    */
-  createFlashcards( flashcards:Array<Object> ): Promise {
-    if (!flashcards) {
+  createFlashcards( flashcardsToCreate:Array<Object> ): Promise {
+    if (!flashcardsToCreate) {
       // TODO: handle the error here.
       return Promise.reject();
-    }
-
-    let flashcardsToCreate = flashcards;
-    if (!_.isArray(flashcards)) {
-      flashcardsToCreate = [flashcards]; // eslint-disable-line no-param-reassign
     }
 
     return new Promise( (resolve) => {
@@ -59,6 +48,29 @@ const FlashCardLibrary = {
         });
         resolve( flashcardsToCreate );
       }, TIMEOUT );
+    });
+  },
+
+  /**
+   * API method: batch updates flashcards in the database.
+   * Takes a map of updates to apply to the flashcards.
+   */
+  updateFlashcards( flashcardUpdatesMap: Object ): Promise {
+    if (!flashcardUpdatesMap ) {
+      // TODO: hanbdle the error here
+      return Promise.reject();
+    }
+
+    return new Promise( (resolve) => {
+      setTimeout( () => {
+        const updatedFlashcards = [];
+        _.each( flashcardUpdatesMap, (flashcardUpdates, flashcardId) => {
+          const flashcard = _.get(_flashcards, flashcardId );
+          _.assign(flashcard, _.omit(flashcardUpdates, 'id'));
+          updatedFlashcards.push( flashcard );
+        });
+        resolve( updatedFlashcards );
+      }, TIMEOUT);
     });
   },
 
