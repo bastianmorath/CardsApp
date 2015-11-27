@@ -5,7 +5,7 @@
  * @flow
  */
 
-const TIMEOUT = 100;
+const TIMEOUT = 50;
 import _ from 'lodash';
 import _flashcards from '../../test/mock/flashcard';
 let idCounter = 0;
@@ -15,8 +15,7 @@ _.each( _flashcards, (flashcard) => {
 });
 
 /**
- * FlashCardLibrary is the API for all data operations regarding the flashcard data
- * objects.
+ * Mock FlashCardLibrary should define all the methods the original defines.
  * @type {Object}
  */
 const FlashCardLibrary = {
