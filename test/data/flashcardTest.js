@@ -36,8 +36,8 @@ describe('modules/Flashcard', () => {
 
   describe('actions', () => {
     describe('#fetchFlashcards', () => {
-      it('should load flashcards into the FlashCardStore', ( done ) => {
-        Project.actions.fetchFlashcards().then( () => {
+      it('should load flashcards into the FlashCardStore', () => {
+        return Project.actions.fetchFlashcards().then( () => {
           const flashcardsMap = reactor.evaluateToJS( Project.getters.flashcardsMap );
           expect(_.size(flashcardsMap)).to.eql(_.size(mockFlashcards));
 
@@ -46,31 +46,29 @@ describe('modules/Flashcard', () => {
             expect(originalFlashcard).to.be.ok();
             expect(flashcard).to.eql(originalFlashcard);
           });
-          done();
         });
       });
     });
     describe('#addFlashcard(s)', () => {
-      it('should create a single flashcard', (done) => {
+      it('should create a single flashcard', () => {
         const flashcardToCreate = { frontText: 'Here is some text' };
-        Project.actions.addFlashcard(flashcardToCreate).then( () => {
+        return Project.actions.addFlashcard(flashcardToCreate).then( () => {
           const flashcardsMap = reactor.evaluateToJS( Project.getters.flashcardsMap );
           const flashcard = _.first(_.where(flashcardsMap, flashcardToCreate ) );
 
           expect(flashcard).to.be.ok();
           expect(flashcard).to.be.an('object');
           expect(flashcard.id).to.be.a('string');
-          done();
-        }).catch( done );
+        });
       });
 
-      it('should create multiple flashcards', (done) => {
+      it('should create multiple flashcards', () => {
         const flashcardsToCreate = [
           { frontText: 'frontText 3', backText: 'backText 3' },
           { frontTExt: 'frontText 4' },
         ];
 
-        Project.actions.addFlashcards( flashcardsToCreate ).then( () => {
+        return Project.actions.addFlashcards( flashcardsToCreate ).then( () => {
           const flashcardsMap = reactor.evaluateToJS( Project.getters.flashcardsMap );
           _.each( flashcardsToCreate, (flashcardToCreate) => {
             const flashcard = _.first(_.where(flashcardsMap, flashcardToCreate));
@@ -78,8 +76,6 @@ describe('modules/Flashcard', () => {
             expect(flashcard).to.be.an('object');
             expect(flashcard.id).to.be.a('string');
           });
-
-          done();
         });
       });
 
@@ -87,30 +83,71 @@ describe('modules/Flashcard', () => {
         // TODO add test for empty flashcard.
       });
     });
+    describe('#updateFlashcard(s)', () => {
+      beforeEach( (done) => {
+        Project.actions.fetchFlashcards().then(done);
+      });
+      it('should update a single flashcard', () => {
+        const flashcardsMap = reactor.evaluateToJS( Project.getters.flashcardsMap );
+        const flashcardToUpdate = _.sample(flashcardsMap);
+        const flashcardUpdates = {
+          frontText: 'this is a new front text',
+          backText: 'this is a new back text',
+        };
+
+        return Project.actions.updateFlashcard( flashcardToUpdate.id, flashcardUpdates).then( () => {
+          const updatedFlashcardsMap = reactor.evaluateToJS( Project.getters.flashcardsMap );
+          const updatedFlashcard = _.get(updatedFlashcardsMap, flashcardToUpdate.id );
+
+          expect(_.size(flashcardsMap)).to.eql(_.size(updatedFlashcardsMap) );
+          expect(updatedFlashcard).to.eql(_.assign(flashcardToUpdate, flashcardUpdates) );
+        });
+      });
+      it('should batch update multiple flashcards', () => {
+        const flashcardsMap = reactor.evaluateToJS( Project.getters.flashcardsMap );
+        const flashcardsToUpdate = _.sample(flashcardsMap, 3 );
+        const flashcardUpdates = [
+          { frontText: 'first update to the front Text' },
+          { backText: 'what ever we want to update.' },
+          { frontText: 'frontText update', backText: 'update the back text' },
+        ];
+
+        const flashcardUpdatesMap = {};
+        _.each( flashcardsToUpdate, (flashcardToUpdate, i) => {
+          _.set(flashcardUpdatesMap, flashcardToUpdate.id, flashcardUpdates[i] );
+        });
+
+        return Project.actions.updateFlashcards( flashcardUpdatesMap ).then( () => {
+          const updatedFlashcardsMap = reactor.evaluateToJS( Project.getters.flashcardsMap );
+          _.each( flashcardsToUpdate, (flashcardToUpdate) => {
+            const updatedFlashcard = _.get(updatedFlashcardsMap, flashcardToUpdate.id );
+            expect(updatedFlashcard).to.eql(_.assign(flashcardToUpdate, flashcardUpdatesMap[flashcardToUpdate.id]) );
+          });
+        });
+      });
+    });
     describe('#deleteFlashcard(s)', () => {
       // import some flashcards into the reactor, so we have something to delete.
-      beforeEach( (done) => {
-        Project.actions.fetchFlashcards().then( done );
+      beforeEach( () => {
+        return Project.actions.fetchFlashcards().then();
       });
-      it('should delete a single flashcard', (done) => {
+      it('should delete a single flashcard', () => {
         const flashcardsMap = reactor.evaluateToJS( Project.getters.flashcardsMap );
         const flashcardIdToDelete = _.sample(flashcardsMap).id;
 
-        Project.actions.deleteFlashcard( flashcardIdToDelete ).then( () => {
+        return Project.actions.deleteFlashcard( flashcardIdToDelete ).then( () => {
           const newFlashcardsMap = reactor.evaluateToJS( Project.getters.flashcardsMap );
           const deletedFlashcard = _.get(newFlashcardsMap, flashcardIdToDelete );
 
           expect( _.size(flashcardsMap) - 1).to.eql( _.size(newFlashcardsMap) );
           expect(deletedFlashcard).to.be(undefined);
-
-          done();
         });
       });
-      it('should batch delete multiple flashcards', (done) => {
+      it('should batch delete multiple flashcards', () => {
         const flashcardsMap = reactor.evaluateToJS( Project.getters.flashcardsMap );
         const flashcardIdsToDelete = _.pluck( _.sample(flashcardsMap, 3 ), 'id' );
 
-        Project.actions.deleteFlashcards( flashcardIdsToDelete ).then( () => {
+        return Project.actions.deleteFlashcards( flashcardIdsToDelete ).then( () => {
           const newFlashcardsMap = reactor.evaluateToJS( Project.getters.flashcardsMap );
           expect( _.size(flashcardsMap) - 3).to.eql( _.size(newFlashcardsMap) );
 
@@ -118,7 +155,6 @@ describe('modules/Flashcard', () => {
             const deletedFlashcard = _.get(newFlashcardsMap, deletedFlashcardId);
             expect(deletedFlashcard).to.eql(undefined);
           });
-          done();
         });
       });
       it('should not try to delete a flashcard when passed an empty string', (done) => {
