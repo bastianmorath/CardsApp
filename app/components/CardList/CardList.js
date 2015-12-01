@@ -9,7 +9,6 @@ import CardListElement from './CardListElement';
 import Styles from './CardListStyles.js';
 import CustomPropTypes from '../../constants/CustomPropTypes';
 
-
 const {
   PropTypes,
   View,
@@ -23,19 +22,33 @@ const {
 const CardList = React.createClass({
   displayName: 'CardList',
 
-  // add flashcards to the datasource of ListView
   propTypes: {
-    flashcards: PropTypes.arrayOf(CustomPropTypes.flashcard),
+    flashcards: PropTypes.arrayOf(CustomPropTypes.flashcard).isRequired,
   },
 
   getInitialState() {
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.frontText !== r2.frontText});
     return {
-      dataSource: ds.cloneWithRows(this.props.flashcards),
+      dataSource: this._getListViewDataSource(this.props.flashcards),
     };
   },
 
-  renderRow(rowData) {
+  componentWillReceiveProps(nextProps: Object) {
+    if (nextProps) {
+      this.setState({
+        dataSource: this._getListViewDataSource(nextProps.flashcards),
+      });
+    }
+  },
+
+  /**
+   * Helper function that creates the ListView.DataSource object from the passed flashcard array.
+   */
+  _getListViewDataSource(flashcards: Array<Object>) {
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.frontText !== r2.frontText});
+    return ds.cloneWithRows(flashcards);
+  },
+
+  _renderRow(rowData: Object) {
     return (
       <CardListElement flashcard={rowData}/>
     );
@@ -47,7 +60,7 @@ const CardList = React.createClass({
         <ListView
           style={Styles.listView}
           dataSource={this.state.dataSource}
-          renderRow={this.renderRow}
+          renderRow={this._renderRow}
         />
       </View>
     );

@@ -7,7 +7,8 @@
 
 import React from 'react-native';
 import CardList from './CardList';
-import flashcards from '../../../test/mock/flashcard';
+import Nuclear from '../../nuclear/main';
+const {reactor, getters} = Nuclear;
 
 /**
  * The CardListContainer is the data container for the CardList component.
@@ -17,8 +18,16 @@ import flashcards from '../../../test/mock/flashcard';
  */
 const CardListContainer = React.createClass({
   displayName: 'CardListContainer',
+  mixins: [reactor.ReactMixin],
+
+  getDataBindings(): Object {
+    return {
+      flashcards: getters.flashcardsArray,
+    };
+  },
 
   render() {
+    const flashcards = this.state.flashcards.toJS();
     return (
       <CardList flashcards={flashcards} />
     );
