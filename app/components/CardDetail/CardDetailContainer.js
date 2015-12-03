@@ -12,6 +12,8 @@ import CardDetail from './CardDetail.js';
 
 import Nuclear from '../../nuclear/main';
 const {getters, reactor} = Nuclear;
+
+import Button from '../CustomComponents/CardButton.js';
  /**
   * The CardDetailContainer is the data container for the CardDetail component.
   * At the moment, it just loads some mock data.
@@ -40,7 +42,12 @@ const CardDetailContainer = React.createClass({
       // Error handling
     }
     return (
+      <React.View>
+      <Button textStyle={{fontSize: 18}}>
+        Edit
+      </Button>
       <CardDetail flashcard={flashcard}/>
+      </React.View>
     );
   },
 });
