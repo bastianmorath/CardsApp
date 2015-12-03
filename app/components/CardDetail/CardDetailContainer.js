@@ -33,7 +33,12 @@ const CardDetailContainer = React.createClass({
   },
 
   render() {
-    const flashcard = (this.state.flashcards.get(this.props.flashcardId) || {}).toJS();
+    let flashcard = this.state.flashcards.get(this.props.flashcardId);
+    if (typeof(flashcard) !== 'undefined') {
+      flashcard = flashcard.toJS();
+    } else {
+      // Error handling
+    }
     return (
       <CardDetail flashcard={flashcard}/>
     );
