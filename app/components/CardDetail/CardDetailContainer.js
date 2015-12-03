@@ -5,7 +5,6 @@
  * @flow
  */
 
-import _ from 'lodash';
 import React from 'react-native';
 const { PropTypes } = React;
 
@@ -19,12 +18,22 @@ const {getters, reactor} = Nuclear;
   */
 const CardDetailContainer = React.createClass({
   displayName: 'CardDetailContainer',
+
   propTypes: {
     flashcardId: PropTypes.string,
   },
 
+  mixins: [reactor.ReactMixin],
+
+  // Keep this component's state in sync with the reactor
+  getDataBindings(): Object {
+    return {
+      flashcards: getters.flashcardsMap,
+    };
+  },
+
   render() {
-    const flashcard = (reactor.evaluate(getters.flashcardsMap).get(this.props.flashcardId) || {}).toJS();
+    const flashcard = (this.state.flashcards.get(this.props.flashcardId) || {}).toJS();
     return (
       <CardDetail flashcard={flashcard}/>
     );

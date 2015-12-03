@@ -20,6 +20,7 @@ const CardListContainer = React.createClass({
   displayName: 'CardListContainer',
   mixins: [reactor.ReactMixin],
 
+  // Keep this component's state in sync with the reactor
   getDataBindings(): Object {
     return {
       flashcards: getters.flashcardsArray,
