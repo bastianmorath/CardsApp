@@ -8,5 +8,11 @@
  */
 
 const flashcardsMap = ['flashcards'];
+const flashcardsArray = [
+  ['flashcards'],
+  (flashcards: Object): Object => {
+    return flashcards.toList();
+  },
+];
 
-export default { flashcardsMap };
+export default { flashcardsMap, flashcardsArray };

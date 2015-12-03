@@ -14,4 +14,7 @@ reactor.registerStores({
   'flashcards': FlashCardStore,
 });
 
-export default { getters, actions };
+// Fetch the initial flashcards
+actions.fetchFlashcards();
+
+export default { reactor, getters, actions };
