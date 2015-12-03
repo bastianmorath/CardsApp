@@ -16,11 +16,12 @@ const {
 
  const CardButtonStyles = StyleSheet.create({
    button: {
-     //backgroundColor: '#1abc9c',
+     backgroundColor: '#1abc9c',
      height: kSize,
      width: kSize,
      justifyContent: 'center',
      borderRadius: kSize/2,
+     position: 'absolute',
    },
    opacity: {
      opacity: 0.5,

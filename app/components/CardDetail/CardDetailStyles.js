@@ -14,8 +14,9 @@ const {
    StyleSheet,
 } = React;
 
-const kMarginTop = 32;
+const kMarginTop = 40;
 const kCellMarginSide = 10;
+const kSize = 50; // Size of button
 
 /**
 * This StyleSheet handles styles for CardDetail components.
@@ -58,9 +59,8 @@ const CardDetailStyles = StyleSheet.create({
 // Sets color and location of editButton
   editButton:{
     backgroundColor: colors.Green,
-    right: kCellMarginSide*2,
-    top: kMarginTop+kCellMarginSide,
-    position: 'absolute',
+    right: 2*kCellMarginSide + 10,
+    top: kMarginTop-kSize/2,
   }
 });
 
