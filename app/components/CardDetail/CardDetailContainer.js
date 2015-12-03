@@ -5,15 +5,19 @@
  * @flow
  */
 
+import _ from 'lodash';
 import React from 'react-native';
-const { PropTypes } = React;
-
+const {
+  PropTypes,
+  View,
+} = React;
 import CardDetail from './CardDetail.js';
+import Styles from './CardDetailStyles';
+import Button from '../CustomComponents/CardButton.js';
 
 import Nuclear from '../../nuclear/main';
 const {getters, reactor} = Nuclear;
 
-import Button from '../CustomComponents/CardButton.js';
  /**
   * The CardDetailContainer is the data container for the CardDetail component.
   * At the moment, it just loads some mock data.
@@ -42,14 +46,16 @@ const CardDetailContainer = React.createClass({
       // Error handling
     }
     return (
-      <React.View>
-      <Button textStyle={{fontSize: 18}}>
-        Edit
-      </Button>
-      <CardDetail flashcard={flashcard}/>
-      </React.View>
+      <View style={Styles.scrollViewHolder}>
+        <CardDetail flashcard={flashcard}/>
+        <Button style={Styles.editButton}/>
+      </View>
     );
   },
+
+  _buttonPressed() {
+
+  }
 });
 
 export default CardDetailContainer;

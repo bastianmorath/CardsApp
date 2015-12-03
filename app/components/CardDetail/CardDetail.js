@@ -31,7 +31,7 @@ const CardDetail = React.createClass({
     return (
     // The ScrollView holds two CardDetailTextViews that each display the
     // frontText or backText, respectively.
-    <View style={Styles.scrollViewHolder}>
+    <View>
       <ScrollView style={Styles.listView}>
         <CardDetailTextView
           text={flashcard.frontText}

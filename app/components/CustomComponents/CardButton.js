@@ -6,17 +6,20 @@
  */
 
  import React from 'react-native';
+ import StyleSheetPropType from 'react-native/Libraries/StyleSheet/StyleSheetPropType';
+ import TextStylePropTypes from 'react-native/Libraries/Text/TextStylePropTypes';
+
+ import Styles from './CardButtonStyles';
  const {
    Component,
    StyleSheet,
    Text,
    View,
-   Animated,
+   Image,
    TouchableOpacity,
-   Dimensions
+   PropTypes,
  } = React;
- import StyleSheetPropType from 'react-native/Libraries/StyleSheet/StyleSheetPropType';
- import TextStylePropTypes from 'react-native/Libraries/Text/TextStylePropTypes';
+
 
  /** This component handeles a button with properties:
   *
@@ -28,56 +31,27 @@
 
   const CardButton = React.createClass({
     displayName: 'CardButton',
-
-
-
-
+    propTypes: {
+      onPress: PropTypes.string,
+      style: StyleSheetPropType(TextStylePropTypes),
+      buttonType: PropTypes.string,
+    },
     render () {
-  // Extract TouchableOpacity props
-  var touchableProps = {
-    onPress: this.props.onPress,
-    onPressIn: this.props.onPressIn,
-    onPressOut: this.props.onPressOut,
-    onLongPress: this.props.onLongPress
-  };
 
-  if (this.props.isDisabled === true || this.props.isLoading === true) {
-    return (
-      <View style={[styles.button]}>
-      </View>
-    );
-  } else {
-    return (
-      <TouchableOpacity {...touchableProps}
-        style={[styles.button, this.props.style]}>
-      </TouchableOpacity>
-    );
-  }
-},
-  });
 
-  var styles = StyleSheet.create({
-    button: {
-      backgroundColor: '#1abc9c',
-      height: 50,
-      width: 50,
-      marginTop: 50,
-      marginTop: 50,
-      justifyContent: 'center',
-      borderRadius: 25,
-    },
-    textButton: {
-      fontSize: 18,
-      color: 'white',
-      alignSelf: 'center',
-    },
-    opacity: {
-      opacity: 0.5,
-    },
-    buttonIcon: {
-    fontSize: 20,
-    height: 22,
-    color: 'white',
-  },
-  });
+      return (
+        <TouchableOpacity
+          style={[Styles.button, this.props.style]}>
+          <Image
+            style={Styles.icon}
+            source={require('./EditIcon.png')}
+            />
+        </TouchableOpacity>
+      )},
+
+      onPress() {
+
+      },
+});
+
 export default CardButton;

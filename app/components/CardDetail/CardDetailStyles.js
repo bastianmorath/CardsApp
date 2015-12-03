@@ -54,6 +54,14 @@ const CardDetailStyles = StyleSheet.create({
   textBox: _.assign({
     margin: 20,
   }, fonts.text ),
+
+// Sets color and location of editButton
+  editButton:{
+    backgroundColor: colors.Green,
+    right: kCellMarginSide*2,
+    top: kMarginTop+kCellMarginSide,
+    position: 'absolute',
+  }
 });
 
 export default CardDetailStyles;
