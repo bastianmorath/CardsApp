@@ -6,12 +6,14 @@
  */
 
 import React from 'react-native';
-const { PropTypes } = React;
+const {
+  PropTypes,
+} = React;
+import Nuclear from '../../nuclear/main';
+const {getters, reactor} = Nuclear;
 
 import CardDetail from './CardDetail.js';
 
-import Nuclear from '../../nuclear/main';
-const {getters, reactor} = Nuclear;
  /**
   * The CardDetailContainer is the data container for the CardDetail component.
   * At the moment, it just loads some mock data.
@@ -21,6 +23,7 @@ const CardDetailContainer = React.createClass({
 
   propTypes: {
     flashcardId: PropTypes.string,
+    isEditing: PropTypes.bool,
   },
 
   mixins: [reactor.ReactMixin],
@@ -34,13 +37,10 @@ const CardDetailContainer = React.createClass({
 
   render() {
     let flashcard = this.state.flashcards.get(this.props.flashcardId);
-    if (typeof(flashcard) !== 'undefined') {
-      flashcard = flashcard.toJS();
-    } else {
-      // Error handling
-    }
+    flashcard = flashcard ? flashcard.toJS() : {};
+
     return (
-      <CardDetail flashcard={flashcard}/>
+      <CardDetail flashcard={flashcard} isEditing={this.props.isEditing}/>
     );
   },
 });
