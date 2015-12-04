@@ -19,7 +19,7 @@ const CardButtonStyles = StyleSheet.create({
     height: kSize,
     width: kSize,
     justifyContent: 'center',
-    borderRadius: kSize / 2,
+    borderRadius: kSize * 0.5,
     position: 'absolute',
     shadowRadius: 15,
     shadowOffset: {width: 10, height: 10},
@@ -28,10 +28,10 @@ const CardButtonStyles = StyleSheet.create({
   },
 
   icon: {
-    height: kSize - 25,
-    width: kSize - 25,
+    height: kSize * 0.5,
+    width: kSize * 0.5,
     alignSelf: 'center',
-    backgroundColor: 'rgba(0,0,0,0)',
+    backgroundColor: 'black',
   },
 });
 
