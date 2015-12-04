@@ -6,15 +6,11 @@
  */
 
  import React from 'react-native';
- import StyleSheetPropType from 'react-native/Libraries/StyleSheet/StyleSheetPropType';
- import TextStylePropTypes from 'react-native/Libraries/Text/TextStylePropTypes';
-
+ import styleSheetPropType from 'react-native/Libraries/StyleSheet/StyleSheetPropType';
+ import textStylePropTypes from 'react-native/Libraries/Text/TextStylePropTypes';
+ import colors from '../../constants/colors';
  import Styles from './CardButtonStyles';
  const {
-   Component,
-   StyleSheet,
-   Text,
-   View,
    Image,
    TouchableOpacity,
    PropTypes,
@@ -29,29 +25,42 @@
   *
   */
 
-  const CardButton = React.createClass({
-    displayName: 'CardButton',
-    propTypes: {
-      onPress: PropTypes.string,
-      style: StyleSheetPropType(TextStylePropTypes),
-      buttonType: PropTypes.string,
-    },
-    render () {
+ const CardButton = React.createClass({
+   displayName: 'CardButton',
+   propTypes: {
+     onPress: PropTypes.func,
+     style: styleSheetPropType(textStylePropTypes),
+     buttonType: PropTypes.string,
+   },
 
-
-      return (
+   render() {
+     let buttonComponent;
+     let color;
+     if (this.props.buttonType === 'edit') {
+       color = colors.Green;
+       buttonComponent = (
+         <Image
+           style={Styles.icon}
+            source={require('../../../Resources/done.png')}
+           />
+       );
+     } else {
+       color = colors.Red;
+       buttonComponent = (
+         <Image
+           style={Styles.icon}
+            source={require('../../../Resources/edit.png')}
+           />
+       );
+     }
+     return (
         <TouchableOpacity
-          style={[Styles.button, this.props.style]}>
-          <Image
-            style={Styles.icon}
-            source={require('./EditIcon.png')}
-            />
+          onPress={this.props.onPress}
+          style={[Styles.button, this.props.style, {backgroundColor: color}]}
+        >
+          {buttonComponent}
         </TouchableOpacity>
-      )},
-
-      onPress() {
-
-      },
-});
-
-export default CardButton;
+    );
+   },
+ });
+ export default CardButton;

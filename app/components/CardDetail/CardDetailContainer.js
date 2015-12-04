@@ -5,18 +5,16 @@
  * @flow
  */
 
-import _ from 'lodash';
 import React from 'react-native';
 const {
   PropTypes,
   View,
 } = React;
-import CardDetail from './CardDetail.js';
-import Styles from './CardDetailStyles';
-import Button from '../CustomComponents/CardButton.js';
-
 import Nuclear from '../../nuclear/main';
 const {getters, reactor} = Nuclear;
+
+import CardDetail from './CardDetail.js';
+import Styles from './CardDetailStyles';
 
  /**
   * The CardDetailContainer is the data container for the CardDetail component.
@@ -27,6 +25,7 @@ const CardDetailContainer = React.createClass({
 
   propTypes: {
     flashcardId: PropTypes.string,
+    isEditing: PropTypes.bool,
   },
 
   mixins: [reactor.ReactMixin],
@@ -40,22 +39,12 @@ const CardDetailContainer = React.createClass({
 
   render() {
     let flashcard = this.state.flashcards.get(this.props.flashcardId);
-    if (typeof(flashcard) !== 'undefined') {
-      flashcard = flashcard.toJS();
-    } else {
-      // Error handling
-    }
+    flashcard = flashcard ? flashcard.toJS() : {};
+
     return (
-      <View style={Styles.scrollViewHolder}>
-        <CardDetail flashcard={flashcard}/>
-        <Button style={Styles.editButton}/>
-      </View>
+        <CardDetail flashcard={flashcard} isEditing={this.props.isEditing}/>
     );
   },
-
-  _buttonPressed() {
-
-  }
 });
 
 export default CardDetailContainer;

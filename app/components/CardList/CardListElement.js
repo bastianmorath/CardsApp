@@ -31,7 +31,7 @@ const CardListElement = React.createClass({
 
     return (
       <TouchableWithoutFeedback
-        onPress={() => RouterActions.cardDetail({flashcardId: flashcard.id}) } >
+        onPress={() => RouterActions.cardDetail({flashcardId: flashcard.id, isEditing: false}) } >
         <View style={Styles.cell}>
           <Text style={Styles.text}>{flashcard.frontText}</Text>
         </View>

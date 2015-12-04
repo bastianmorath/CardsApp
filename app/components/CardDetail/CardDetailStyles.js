@@ -57,11 +57,11 @@ const CardDetailStyles = StyleSheet.create({
   }, fonts.text ),
 
 // Sets color and location of editButton
-  editButton:{
+  editButton: {
     backgroundColor: colors.Green,
-    right: 2*kCellMarginSide + 10,
-    top: kMarginTop-kSize/2,
-  }
+    right: 2 * kCellMarginSide + 10,
+    top: kMarginTop - kSize / 2,
+  },
 });
 
 export default CardDetailStyles;
