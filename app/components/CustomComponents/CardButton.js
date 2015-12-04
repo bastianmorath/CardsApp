@@ -21,12 +21,13 @@
   *
   * onPress: Function that should be called when the button is pressed
   * style: Style of the button
-  * buttonType: 'edit' or .
+  * buttonType: 'edit' or 'done'
   *
   */
 
  const CardButton = React.createClass({
    displayName: 'CardButton',
+
    propTypes: {
      onPress: PropTypes.func,
      style: styleSheetPropType(textStylePropTypes),
@@ -36,6 +37,7 @@
    render() {
      let buttonComponent;
      let color;
+     // Edit or done-Icon azeigen, je nach dem ob der User im Editmode ist
      if (this.props.buttonType === 'edit') {
        color = colors.Green;
        buttonComponent = (
@@ -53,6 +55,7 @@
            />
        );
      }
+
      return (
         <TouchableHighlight
           onPress={this.props.onPress}
@@ -63,4 +66,5 @@
     );
    },
  });
+
  export default CardButton;

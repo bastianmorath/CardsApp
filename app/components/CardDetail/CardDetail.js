@@ -48,20 +48,26 @@ const CardDetail = React.createClass({
     <View style={Styles.scrollViewHolder}>
       <ScrollView style={Styles.listView}>
         <View style={Styles.flashcardHolder}>
+
           <CardDetailTextView
             text={flashcard.frontText}
           />
+
           <View style={Styles.separator}/>
+
           <CardDetailTextView
             text={flashcard.backText}
           />
+
         </View>
       </ScrollView>
+
       <Button
         style={Styles.editButton}
         onPress={this._buttonPressed}
         buttonType={buttonType}
       />
+
     </View>
     );
   },

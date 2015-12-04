@@ -18,7 +18,7 @@ const {
 } = React;
 
 /**
- * A cardListElement component is responsible to display the fronttext of a
+ * A cardListElement component is responsible for displaying the fronttext of a
  * flashcard, used in a ListView
  */
 const CardListElement = React.createClass({
