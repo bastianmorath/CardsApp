@@ -31,30 +31,31 @@ const CardDetail = React.createClass({
 
   getInitialState() {
     return {
-      isEditing: false,
+      isEditing: this.props.isEditing,
     };
   },
 
   _buttonPressed() {
-    this.setState({ isEditing: this.props.isEditing ? false : true});
+    this.setState({ isEditing: !this.state.isEditing});
   },
 
   render() {
     const flashcard = this.props.flashcard || {};
-    const buttonType = this.props.isEditing ? 'edit' : 'done';
-
+    const buttonType = this.state.isEditing ? 'edit' : 'done';
     return (
     // The ScrollView holds two CardDetailTextViews that each display the
     // frontText or backText, respectively.
     <View style={Styles.scrollViewHolder}>
       <ScrollView style={Styles.listView}>
-        <CardDetailTextView
-          text={flashcard.frontText}
-        />
-        <View style={Styles.separator}/>
-        <CardDetailTextView
-          text={flashcard.backText}
-        />
+        <View style={Styles.flashcardHolder}>
+          <CardDetailTextView
+            text={flashcard.frontText}
+          />
+          <View style={Styles.separator}/>
+          <CardDetailTextView
+            text={flashcard.backText}
+          />
+        </View>
       </ScrollView>
       <Button
         style={Styles.editButton}

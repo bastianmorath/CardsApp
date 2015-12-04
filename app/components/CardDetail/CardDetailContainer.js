@@ -8,13 +8,11 @@
 import React from 'react-native';
 const {
   PropTypes,
-  View,
 } = React;
 import Nuclear from '../../nuclear/main';
 const {getters, reactor} = Nuclear;
 
 import CardDetail from './CardDetail.js';
-import Styles from './CardDetailStyles';
 
  /**
   * The CardDetailContainer is the data container for the CardDetail component.

@@ -12,7 +12,7 @@
  import Styles from './CardButtonStyles';
  const {
    Image,
-   TouchableOpacity,
+   TouchableHighlight,
    PropTypes,
  } = React;
 
@@ -54,12 +54,12 @@
        );
      }
      return (
-        <TouchableOpacity
+        <TouchableHighlight
           onPress={this.props.onPress}
           style={[Styles.button, this.props.style, {backgroundColor: color}]}
         >
           {buttonComponent}
-        </TouchableOpacity>
+        </TouchableHighlight>
     );
    },
  });
