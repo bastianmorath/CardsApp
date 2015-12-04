@@ -40,7 +40,7 @@ const CardDetailContainer = React.createClass({
     flashcard = flashcard ? flashcard.toJS() : {};
 
     return (
-        <CardDetail flashcard={flashcard} isEditing={this.props.isEditing}/>
+      <CardDetail flashcard={flashcard} isEditing={this.props.isEditing}/>
     );
   },
 });

@@ -20,7 +20,6 @@ const {
 /** The CardDetail is responsible
  * for displaying the front and backside of a flashcard.
  */
-
 const CardDetail = React.createClass({
   displayName: 'CardDetail',
 
@@ -35,7 +34,7 @@ const CardDetail = React.createClass({
     };
   },
 
-  _buttonPressed() {
+  _onEditButtonPress() {
     this.setState({ isEditing: !this.state.isEditing});
   },
 
@@ -45,30 +44,28 @@ const CardDetail = React.createClass({
     return (
     // The ScrollView holds two CardDetailTextViews that each display the
     // frontText or backText, respectively.
-    <View style={Styles.scrollViewHolder}>
-      <ScrollView style={Styles.listView}>
-        <View style={Styles.flashcardHolder}>
+      <View style={Styles.scrollViewHolder}>
+        <ScrollView style={Styles.listView}>
+          <View style={Styles.flashcardHolder}>
 
-          <CardDetailTextView
-            text={flashcard.frontText}
-          />
+            <CardDetailTextView
+              text={flashcard.frontText}
+            />
 
-          <View style={Styles.separator}/>
+            <View style={Styles.separator}/>
 
-          <CardDetailTextView
-            text={flashcard.backText}
-          />
+            <CardDetailTextView
+              text={flashcard.backText}
+            />
 
-        </View>
-      </ScrollView>
-
-      <Button
-        style={Styles.editButton}
-        onPress={this._buttonPressed}
-        buttonType={buttonType}
-      />
-
-    </View>
+          </View>
+        </ScrollView>
+        <Button
+          style={Styles.editButton}
+          onPress={this._onEditButtonPress}
+          buttonType={buttonType}
+        />
+      </View>
     );
   },
 });

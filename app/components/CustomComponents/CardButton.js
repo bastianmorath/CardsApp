@@ -5,66 +5,68 @@
  * @flow
  */
 
- import React from 'react-native';
- import styleSheetPropType from 'react-native/Libraries/StyleSheet/StyleSheetPropType';
- import textStylePropTypes from 'react-native/Libraries/Text/TextStylePropTypes';
- import colors from '../../constants/colors';
- import Styles from './CardButtonStyles';
- const {
-   Image,
-   TouchableHighlight,
-   PropTypes,
- } = React;
+import React from 'react-native';
+import styleSheetPropType from 'react-native/Libraries/StyleSheet/StyleSheetPropType';
+import textStylePropTypes from 'react-native/Libraries/Text/TextStylePropTypes';
+import colors from '../../constants/colors';
+import Styles from './CardButtonStyles';
+const {
+ Image,
+ TouchableHighlight,
+ PropTypes,
+} = React;
 
 
- /** This component handeles a button with properties:
-  *
-  * onPress: Function that should be called when the button is pressed
-  * style: Style of the button
-  * buttonType: 'edit' or 'done'
-  *
-  */
+/** This component displays a button with properties:
+*
+* onPress: Function that should be called when the button is pressed
+* style: Style of the button
+* buttonType: 'edit' or 'done'
+*
+*/
+const CardButton = React.createClass({
+  displayName: 'CardButton',
 
- const CardButton = React.createClass({
-   displayName: 'CardButton',
+  propTypes: {
+    onPress: PropTypes.func,
+    style: styleSheetPropType(textStylePropTypes),
+    buttonType: PropTypes.string,
+  },
 
-   propTypes: {
-     onPress: PropTypes.func,
-     style: styleSheetPropType(textStylePropTypes),
-     buttonType: PropTypes.string,
-   },
+  _renderButtonComponent(): Object {
+    let buttonComponent;
 
-   render() {
-     let buttonComponent;
-     let color;
-     // Edit or done-Icon azeigen, je nach dem ob der User im Editmode ist
-     if (this.props.buttonType === 'edit') {
-       color = colors.Green;
-       buttonComponent = (
-         <Image
-           style={Styles.icon}
-            source={require('../../../Resources/done.png')}
-           />
-       );
-     } else {
-       color = colors.Red;
-       buttonComponent = (
-         <Image
-           style={Styles.icon}
-            source={require('../../../Resources/edit.png')}
-           />
-       );
-     }
+    // set the image according to the button type
+    if (this.props.buttonType === 'edit') {
+      buttonComponent = (
+       <Image
+         style={Styles.icon}
+          source={require('../../../Resources/done.png')}
+         />
+     );
+    } else {
+      buttonComponent = (
+       <Image
+         style={Styles.icon}
+          source={require('../../../Resources/edit.png')}
+         />
+     );
+    }
+    return buttonComponent;
+  },
 
-     return (
-        <TouchableHighlight
-          onPress={this.props.onPress}
-          style={[Styles.button, this.props.style, {backgroundColor: color}]}
-        >
-          {buttonComponent}
-        </TouchableHighlight>
+  render() {
+    const color = this.props.buttonType === 'edit' ? colors.Green : colors.Red;
+    const buttonComponent = this._renderButtonComponent();
+
+    return (
+      <TouchableHighlight
+        onPress={this.props.onPress}
+        style={[Styles.button, this.props.style, {backgroundColor: color}]}>
+        {buttonComponent}
+      </TouchableHighlight>
     );
-   },
- });
+  },
+});
 
- export default CardButton;
+export default CardButton;

@@ -28,8 +28,7 @@ const CardDetailStyles = StyleSheet.create({
     backgroundColor: colors.LightGrey,
   },
 
-// Adds a shadow around the view that holds the
-//  front and backside of the flashcard
+  // add a shadow around the view that holds the front and backside of the flashcard
   flashcardHolder: {
     shadowRadius: 35,
     shadowOffset: {width: 10, height: 10},
@@ -44,14 +43,13 @@ const CardDetailStyles = StyleSheet.create({
     margin: kCellMarginSide,
   },
 
-// Stayle properties of a CardDetail TextView
+  // Style properties of a CardDetail TextView
   detailTextView: {
     backgroundColor: 'white',
-
   },
 
-// Style properties of the seperator that seperates the backText and the
-// frontText of the flashCard in CardDetail
+  // Style properties of the seperator that seperates the backText and the
+  // frontText of the flashCard in CardDetail
   separator: {
     height: 1,
     backgroundColor: 'black',
@@ -61,12 +59,11 @@ const CardDetailStyles = StyleSheet.create({
     borderRightColor: 'white',
   },
 
-  // style properties of a text-element in a CardDetailTextView
+  // style properties of a text-element in CardDetailTextView
   textBox: _.assign({
     margin: 20,
   }, fonts.text ),
 
-// Sets color and location of editButton
   editButton: {
     right: 2 * kCellMarginSide + 10,
     top: kMarginTop - kSize / 2,
