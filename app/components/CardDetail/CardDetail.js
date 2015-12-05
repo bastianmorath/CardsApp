@@ -8,14 +8,14 @@
 
 import React from 'react-native';
 import Styles from './CardDetailStyles';
-import CardDetailTextView from './CardDetailTextView';
-import CardDetailEditFlashcard from './CardDetailEditFlashcard';
+
 import CustomPropTypes from '../../constants/CustomPropTypes';
 import Button from '../CustomComponents/CardButton.js';
+import CardDetailEditFlashcard from './CardDetailEditFlashcard';
+import CardDetailViewFlashcard from './CardDetailViewFlashcard';
 
 const {
   View,
-  ScrollView,
   PropTypes,
 } = React;
 
@@ -28,6 +28,9 @@ const CardDetail = React.createClass({
   propTypes: {
     flashcard: CustomPropTypes.flashcard,
     isEditing: PropTypes.bool,
+
+    // newFrontText: flashcard.frontText,
+    // newBackText: flashcard.backText,
   },
 
   getInitialState() {
@@ -40,57 +43,34 @@ const CardDetail = React.createClass({
     this.setState({ isEditing: !this.state.isEditing});
   },
 
-  _renderEditViewComponent(): Object {
-    const flashcard = this.props.flashcard || {};
-
-    let editComponent;
-    // The ScrollView holds two CardDetailTextViews that each display the
-    // frontText or backText, respectively.
-
-    editComponent = (
-      <View>
-        <ScrollView style={Styles.listView}>
-          <View style={Styles.flashcardHolder}>
-            <CardDetailEditFlashcard
-              text={flashcard.frontText}
-            />
-            <View style={Styles.separator}/>
-            <CardDetailEditFlashcard
-              text={flashcard.backText}
-            />
-          </View>
-        </ScrollView>
-      </View>
-    );
-    return editComponent;
-  },
-
-  _renderNonEditViewComponent(): Object {
-    const flashcard = this.props.flashcard || {};
-    let nonEditComponent;
-    nonEditComponent = (
-      <View>
-        <ScrollView style={Styles.listView}>
-          <View style={Styles.flashcardHolder}>
-            <CardDetailTextView
-              text={flashcard.frontText}
-            />
-            <View style={Styles.separator}/>
-            <CardDetailTextView
-              text={flashcard.backText}
-            />
-          </View>
-        </ScrollView>
-      </View>
-    );
-    return nonEditComponent;
+  _textChanged(frontText: String, backText: String) {
+    // Update flashcard text in dataBase
+    this.setState({
+      newFrontText: frontText,
+      newBackText: backText,
+    });
   },
 
   render() {
-    const component = this.state.isEditing ? this._renderEditViewComponent() : this._renderNonEditViewComponent();
     const buttonType = this.state.isEditing ? 'edit' : 'done';
-
+    let component;
+    if (this.state.isEditing) {
+      component = (
+        <CardDetailEditFlashcard
+          flashcard={this.props.flashcard
+          // textChanged={this._textChanged}
+        }/>
+      );
+    } else {
+      component = (
+        <CardDetailViewFlashcard flashcard={this.props.flashcard}/>
+      );
+    }
     return (
+      /* The ScrollView holds two CardDetailTextViews that each display
+       * (editable or non editable) the
+       * frontText or backText, respectively.
+      */
       <View style={Styles.scrollViewHolder}>
         {component}
         <Button

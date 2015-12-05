@@ -7,44 +7,51 @@
 
 import React from 'react-native';
 import Styles from './CardDetailStyles.js';
+import CardDetailEditableTextView from './CardDetailEditableTextView';
+import CustomPropTypes from '../../constants/CustomPropTypes';
 
 const {
   PropTypes,
   View,
-  TextInput,
+  ScrollView,
 } = React;
 
 /**
- * A CardDetailEditFlashcard component displays the front and backside
- * of a flashcard in a editable view so the suer can change its text
+ * A CardDetailTextView component is responsible to display a given text
+ * of a flashcard, used CardDetail to display the front- and backText of
+ * a flashcard.
  */
 const CardDetailEditFlashcard = React.createClass({
   propTypes: {
-    text: PropTypes.string,
+    flashcard: CustomPropTypes.flashcard,
+    textChanged: PropTypes.func,
   },
 
-  getInitialState() {
-    return {
-      editedText: this.props.text,
-    };
+  _frontTextChanged(text: String) {
+    // this.props.textChanged(frontText: text, backText: this.props.flashcard.backText),
   },
 
-  _textHasChanged(value) {
-    this.setState({
-      editedText: value,
-    });
+  _backTextChanged(text: String) {
+    // this.props.textChanged(frontText: this.props.flashcard.frontText, backText: text),
   },
 
   render() {
     return (
-      <View style={Styles.detailTextView}>
-        <TextInput
-          style={Styles.editTextBox}
-          onChangeText={this._textHasChanged}
-          value={this.state.editedText}
-          multiline = {true}
-        />
-      </View>
+      <View>
+           <ScrollView style={Styles.listView}>
+             <View style={Styles.flashcardHolder}>
+               <CardDetailEditableTextView
+                   text={this.props.flashcard.frontText}
+                   textChanged = {this.props._frontTextChanged}
+               />
+               <View style={Styles.separator}/>
+               <CardDetailEditableTextView
+                 text={this.props.flashcard.backText}
+                 textChanged = {this.props._backTextChanged}
+               />
+             </View>
+           </ScrollView>
+     </View>
     );
   },
 });

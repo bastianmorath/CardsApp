@@ -43,11 +43,6 @@ const CardDetailStyles = StyleSheet.create({
     margin: kCellMarginSide,
   },
 
-  // Style properties of a CardDetail TextView
-  detailTextView: {
-    backgroundColor: 'white',
-  },
-
   // Style properties of the seperator that seperates the backText and the
   // frontText of the flashCard in CardDetail
   separator: {
@@ -69,10 +64,17 @@ const CardDetailStyles = StyleSheet.create({
     top: kMarginTop - kSize / 2,
   },
 
-  editTextBox: {
+  // Style properties of a CardDetail TextView
+  detailTextView: {
+    backgroundColor: 'white',
+  },
+
+  editableTextView: _.assign({
+    backgroundColor: 'white',
     margin: 20,
     height: 100,
-  },
+  }, fonts.text ),
+
 });
 
 export default CardDetailStyles;
