@@ -5,9 +5,11 @@
  * @flow
  */
 
+
 import React from 'react-native';
 import Styles from './CardDetailStyles';
 import CardDetailTextView from './CardDetailTextView';
+import CardDetailEditFlashcard from './CardDetailEditFlashcard';
 import CustomPropTypes from '../../constants/CustomPropTypes';
 import Button from '../CustomComponents/CardButton.js';
 
@@ -38,13 +40,36 @@ const CardDetail = React.createClass({
     this.setState({ isEditing: !this.state.isEditing});
   },
 
-  render() {
+  _renderEditViewComponent(): Object {
     const flashcard = this.props.flashcard || {};
-    const buttonType = this.state.isEditing ? 'edit' : 'done';
-    return (
+
+    let editComponent;
     // The ScrollView holds two CardDetailTextViews that each display the
     // frontText or backText, respectively.
-      <View style={Styles.scrollViewHolder}>
+
+    editComponent = (
+      <View>
+        <ScrollView style={Styles.listView}>
+          <View style={Styles.flashcardHolder}>
+            <CardDetailEditFlashcard
+              text={flashcard.frontText}
+            />
+            <View style={Styles.separator}/>
+            <CardDetailEditFlashcard
+              text={flashcard.backText}
+            />
+          </View>
+        </ScrollView>
+      </View>
+    );
+    return editComponent;
+  },
+
+  _renderNonEditViewComponent(): Object {
+    const flashcard = this.props.flashcard || {};
+    let nonEditComponent;
+    nonEditComponent = (
+      <View>
         <ScrollView style={Styles.listView}>
           <View style={Styles.flashcardHolder}>
             <CardDetailTextView
@@ -56,6 +81,18 @@ const CardDetail = React.createClass({
             />
           </View>
         </ScrollView>
+      </View>
+    );
+    return nonEditComponent;
+  },
+
+  render() {
+    const component = this.state.isEditing ? this._renderEditViewComponent() : this._renderNonEditViewComponent();
+    const buttonType = this.state.isEditing ? 'edit' : 'done';
+
+    return (
+      <View style={Styles.scrollViewHolder}>
+        {component}
         <Button
           style={Styles.editButton}
           onPress={this._onEditButtonPress}

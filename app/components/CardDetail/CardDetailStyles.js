@@ -68,6 +68,11 @@ const CardDetailStyles = StyleSheet.create({
     right: 2 * kCellMarginSide + 10,
     top: kMarginTop - kSize / 2,
   },
+
+  editTextBox: {
+    margin: 20,
+    height: 100,
+  },
 });
 
 export default CardDetailStyles;
