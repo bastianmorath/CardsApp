@@ -13,6 +13,7 @@ const {
   View,
   PropTypes,
   TextInput,
+  Text,
 } = React;
 
 const CardDetailText = React.createClass({
@@ -22,26 +23,46 @@ const CardDetailText = React.createClass({
     updateFlashcard: PropTypes.func,
   },
 
-  _didEndEditing(text) {
-    this.props.updateFlashcard(text);
+  getInitialState() {
+    return {
+      frontText: this.props.flashcard.frontText,
+      backText: this.props.flashcard.backText,
+    };
+  },
+
+  _frontTextHasChanged(text) {
+    this.setState({
+      frontText: text,
+    });
+  },
+
+  _backTextHasChanged(text) {
+    this.setState({
+      backText: text,
+    });
+  },
+
+  _didEndEditing() {
+    this.props.updateFlashcard(this.state.frontText, this.state.backText);
   },
 
   _renderEditableTextView(): Object {
-    const flashcard = this.props.flashcard || {};
     let component;
     component = (
       <View>
         <TextInput
           style={Styles.editableTextView}
           onEndEditing={this._didEndEditing}
-          value={flashcard.frontText}
+          onChangeText={this._frontTextHasChanged}
+          value={this.state.frontText}
           multiline={true}
         />
         <View style={Styles.separator}/>
         <TextInput
           style={Styles.editableTextView}
           onEndEditing={this._didEndEditing}
-          value={flashcard.backText}
+          onChangeText={this._backTextHasChanged}
+          value={this.state.backText}
           multiline={true}
         />
       </View>
@@ -58,7 +79,7 @@ const CardDetailText = React.createClass({
         </View>
         <View style={Styles.separator}/>
         <View style={Styles.detailTextView}>
-          <Text style={Styles.textView}>{this.props.flashcard.backtext}</Text>
+          <Text style={Styles.textView}>{this.props.flashcard.backText}</Text>
         </View>
       </View>
     );
@@ -66,7 +87,7 @@ const CardDetailText = React.createClass({
   },
 
   render() {
-    const component = this.props.isEditing ? this._renderEditableTextView : this._renderTextView;
+    const component = this.props.isEditing ? this._renderEditableTextView() : this._renderTextView();
 
     return (
       <View>

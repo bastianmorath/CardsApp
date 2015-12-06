@@ -52,7 +52,7 @@ const CardDetail = React.createClass({
         <CardDetailFlashcard
           flashcard={this.props.flashcard}
           updateFlashcard={this.props.updateFlashcard}
-          isEditing={this.props.isEditing}
+          isEditing={this.state.isEditing}
         />
         <Button
             style={Styles.editButton}
