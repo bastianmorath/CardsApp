@@ -12,7 +12,7 @@ const {
    StyleSheet,
  } = React;
 
-const kMarginTop = 32;
+const kMarginTop = 46;
 const kCellHeight = 120;
 const kCellMarginVertical = 7;
 const kCellMarginSide = 10;

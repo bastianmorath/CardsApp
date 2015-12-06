@@ -55,6 +55,7 @@ const CardDetailText = React.createClass({
           onEndEditing={this._didEndEditing}
           onChangeText={this._frontTextHasChanged}
           value={this.state.frontText}
+          placeholder="Enter the front side of your flashcard"
           multiline={true}
         />
         <View style={Styles.separator}/>
@@ -63,6 +64,7 @@ const CardDetailText = React.createClass({
           onEndEditing={this._didEndEditing}
           onChangeText={this._backTextHasChanged}
           value={this.state.backText}
+          placeholder="Enter the back side of your flashcard"
           multiline={true}
         />
       </View>

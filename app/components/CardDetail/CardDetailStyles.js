@@ -14,9 +14,9 @@ const {
    StyleSheet,
 } = React;
 
-const kMarginTop = 40;
+const kMarginTop = 46;
 const kCellMarginSide = 10;
-const kSize = 50; // Size of button
+const kSize = 40; // Size of button; Also change its value in CardButtonStyle!
 
 /**
 * This StyleSheet handles styles for CardDetail components.
@@ -34,6 +34,7 @@ const CardDetailStyles = StyleSheet.create({
     shadowOffset: {width: 10, height: 10},
     shadowColor: 'grey',
     shadowOpacity: 0.7,
+    backgroundColor: 'white',
   },
 
   listView: {
@@ -70,6 +71,7 @@ const CardDetailStyles = StyleSheet.create({
   },
 
   editableTextView: _.assign({
+    backgroundColor: 'white',
     margin: 20,
     height: 100,
   }, fonts.text ),
