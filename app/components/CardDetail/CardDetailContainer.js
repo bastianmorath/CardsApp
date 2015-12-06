@@ -34,11 +34,14 @@ const CardDetailContainer = React.createClass({
       flashcards: getters.flashcardsMap,
     };
   },
-  _textHasChanged(fText, bText) {
+
+  _updateFlashcard(frontText: string, backText: string) {
     actions.updateFlashcard(
       this.props.flashcardId,
-      {backText: bText},
-      {frontText: fText},
+      {
+        backText: backText,
+        frontText: frontText,
+      },
     );
   },
   render() {
@@ -49,7 +52,7 @@ const CardDetailContainer = React.createClass({
       <CardDetail
         flashcard={flashcard}
         isEditing={this.props.isEditing}
-        textHasChanged={this._textHasChanged}
+        updateFlashcard={this._updateFlashcard}
       />
     );
   },

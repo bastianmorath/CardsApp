@@ -55,7 +55,7 @@ const CardDetailStyles = StyleSheet.create({
   },
 
   // style properties of a text-element in CardDetailTextView
-  textBox: _.assign({
+  textView: _.assign({
     margin: 20,
   }, fonts.text ),
 
@@ -70,7 +70,6 @@ const CardDetailStyles = StyleSheet.create({
   },
 
   editableTextView: _.assign({
-    backgroundColor: 'white',
     margin: 20,
     height: 100,
   }, fonts.text ),

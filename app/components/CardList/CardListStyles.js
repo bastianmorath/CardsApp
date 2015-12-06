@@ -42,10 +42,6 @@ const CardListStyles = StyleSheet.create({
     marginLeft: kCellMarginSide,
     justifyContent: 'center',
     alignItems: 'center',
-    shadowRadius: 20,
-    shadowOffset: {width: 8, height: 8},
-    shadowColor: '#808080',
-    shadowOpacity: 0.3,
   },
 
   // style properties of a text-element in a CardListElement
