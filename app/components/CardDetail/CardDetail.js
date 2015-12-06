@@ -28,22 +28,26 @@ const CardDetail = React.createClass({
   propTypes: {
     flashcard: CustomPropTypes.flashcard,
     isEditing: PropTypes.bool,
-
-    // newFrontText: flashcard.frontText,
-    // newBackText: flashcard.backText,
+    textHasChanged: PropTypes.func,
   },
 
   getInitialState() {
     return {
       isEditing: this.props.isEditing,
+      newFrontText: this.props.flashcard.frontText,
+      newBackText: this.props.flashcard.backText,
     };
   },
 
   _onEditButtonPress() {
+    //  Update flashcard text in dataStore
+    if (this.state.isEditing) {
+      this.props.textHasChanged(this.state.newFrontText, this.state.newBackText);
+    }
     this.setState({ isEditing: !this.state.isEditing});
   },
 
-  _textChanged(frontText: String, backText: String) {
+  _textHasChanged(frontText: String, backText: String) {
     // Update flashcard text in dataBase
     this.setState({
       newFrontText: frontText,
@@ -58,7 +62,7 @@ const CardDetail = React.createClass({
       component = (
         <CardDetailEditFlashcard
           flashcard={this.props.flashcard
-          // textChanged={this._textChanged}
+          textHasChanged={this._textHasChanged}
         }/>
       );
     } else {

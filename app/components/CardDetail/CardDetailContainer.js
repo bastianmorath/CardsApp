@@ -10,7 +10,7 @@ const {
   PropTypes,
 } = React;
 import Nuclear from '../../nuclear/main';
-const {getters, reactor} = Nuclear;
+const {getters, reactor, actions} = Nuclear;
 
 import CardDetail from './CardDetail.js';
 
@@ -34,13 +34,23 @@ const CardDetailContainer = React.createClass({
       flashcards: getters.flashcardsMap,
     };
   },
-
+  _textHasChanged(fText, bText) {
+    actions.updateFlashcard(
+      this.props.flashcardId,
+      {backText: bText},
+      {frontText: fText},
+    );
+  },
   render() {
     let flashcard = this.state.flashcards.get(this.props.flashcardId);
     flashcard = flashcard ? flashcard.toJS() : {};
 
     return (
-      <CardDetail flashcard={flashcard} isEditing={this.props.isEditing}/>
+      <CardDetail
+        flashcard={flashcard}
+        isEditing={this.props.isEditing}
+        textHasChanged={this._textHasChanged}
+      />
     );
   },
 });

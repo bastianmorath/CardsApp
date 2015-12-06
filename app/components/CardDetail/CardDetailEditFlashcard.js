@@ -24,15 +24,15 @@ const {
 const CardDetailEditFlashcard = React.createClass({
   propTypes: {
     flashcard: CustomPropTypes.flashcard,
-    textChanged: PropTypes.func,
+    textHasChanged: PropTypes.func,
   },
 
-  _frontTextChanged(text: String) {
-    // this.props.textChanged(frontText: text, backText: this.props.flashcard.backText),
+  _frontTextHasChanged(text: String) {
+     this.props.textChanged(frontText: text, backText: this.props.flashcard.backText),
   },
 
-  _backTextChanged(text: String) {
-    // this.props.textChanged(frontText: this.props.flashcard.frontText, backText: text),
+  _backTextHasChanged(text: String) {
+     this.props.textChanged(this.props.flashcard.frontText,text),
   },
 
   render() {
@@ -42,12 +42,12 @@ const CardDetailEditFlashcard = React.createClass({
              <View style={Styles.flashcardHolder}>
                <CardDetailEditableTextView
                    text={this.props.flashcard.frontText}
-                   textChanged = {this.props._frontTextChanged}
+                   textHasChanged = {this._frontTextHasChanged}
                />
                <View style={Styles.separator}/>
                <CardDetailEditableTextView
                  text={this.props.flashcard.backText}
-                 textChanged = {this.props._backTextChanged}
+                 textHasChanged = {this._backTextHasChanged}
                />
              </View>
            </ScrollView>

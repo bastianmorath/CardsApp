@@ -16,14 +16,12 @@ const {
 
 /**
  * A CardDetailEditFlashcard component displays the front and backside
- * of a flashcard in a editable view so the suer can change its text
+ * of a flashcard in a editable view so the user can change its text
  */
 const CardDetailEditableFlashcard = React.createClass({
   propTypes: {
-    text: PropTypes.string,
-    textChanged: PropTypes.func,
-    backTextChanged: PropTypes.func,
-    frontText: PropTypes.bool,
+    text: PropTypes.string, // Text to display
+    textHasChanged: PropTypes.func,
   },
 
   getInitialState() {
@@ -32,14 +30,12 @@ const CardDetailEditableFlashcard = React.createClass({
     };
   },
 
-
-  _textHasChanged(value: String) {
+  _textHasChanged(updatedText: String) {
+    this.props.textHasChanged(text: updatedText),
     this.setState({
-      editedText: value,
+      editedText: updatedText,
     });
-    // this.props.textChanged(text: value),
   },
-
 
   render() {
     return (

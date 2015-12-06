@@ -72,7 +72,7 @@ const CardDetailStyles = StyleSheet.create({
   editableTextView: _.assign({
     backgroundColor: 'white',
     margin: 20,
-    height: 130,
+    height: 100,
   }, fonts.text ),
 
 });
