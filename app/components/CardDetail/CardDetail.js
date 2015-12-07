@@ -8,6 +8,7 @@
 
 import React from 'react-native';
 import Styles from './CardDetailStyles';
+import EventEmitter from 'EventEmitter';
 
 import CustomPropTypes from '../../constants/CustomPropTypes';
 import Button from '../CustomComponents/CardButton.js';
@@ -18,9 +19,10 @@ const {
   PropTypes,
 } = React;
 
-/** The CardDetail is responsible
- * for displaying the front and backside of a flashcard.
+/** The CardDetail component holds a CardDetailFlashcard component
+ *  and a button component
  */
+
 const CardDetail = React.createClass({
   displayName: 'CardDetail',
 
@@ -36,23 +38,30 @@ const CardDetail = React.createClass({
     };
   },
 
+  /** Pass an event to CardDetailText so CardDetailText gets notified
+   * when the user pressed the editbutton. The component can then update the flashcard
+   */
+  componentWillMount() {
+    this.eventEmitter = new EventEmitter();
+  },
+
   _onEditButtonPress() {
     this.setState({ isEditing: !this.state.isEditing});
+    this.eventEmitter.emit('onEditButtonPressed');
   },
 
   render() {
     const buttonType = this.state.isEditing ? 'edit' : 'done';
 
     return (
-      /* The ScrollView holds two CardDetailTextViews that each display
-       * (editable or non editable) the
-       * frontText or backText, respectively.
+      /* This view  holds a CardDetailFlashcard and a Button
       */
       <View style={Styles.scrollViewHolder}>
         <CardDetailFlashcard
           flashcard={this.props.flashcard}
           updateFlashcard={this.props.updateFlashcard}
           isEditing={this.state.isEditing}
+          events={this.eventEmitter}
         />
         <Button
             style={Styles.editButton}

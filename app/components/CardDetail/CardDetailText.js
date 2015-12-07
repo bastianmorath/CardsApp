@@ -7,6 +7,7 @@
 
 import React from 'react-native';
 import Styles from './CardDetailStyles.js';
+import Subscribable from 'Subscribable';
 import CustomPropTypes from '../../constants/CustomPropTypes';
 
 const {
@@ -16,18 +17,35 @@ const {
   Text,
 } = React;
 
+/** CardDetailText component displays front or backText of a flashcard,
+ *  either editable or not.
+ * This component subscribes to the 'onEditButtonPressed' event from CardDetail
+ * so it can update the flashcard accordingly
+ */
+
 const CardDetailText = React.createClass({
   propTypes: {
     flashcard: CustomPropTypes.flashcard,
     isEditing: PropTypes.bool,
     updateFlashcard: PropTypes.func,
+    events: PropTypes.object,
   },
+
+  mixins: [Subscribable.Mixin],
 
   getInitialState() {
     return {
       frontText: this.props.flashcard.frontText,
       backText: this.props.flashcard.backText,
     };
+  },
+
+  componentDidMount() {
+    this.addListenerOn(this.props.events, 'onEditButtonPressed', this._onEditButtonPressed);
+  },
+
+  _onEditButtonPressed() {
+    this.props.updateFlashcard(this.state.frontText, this.state.backText);
   },
 
   _frontTextHasChanged(text) {

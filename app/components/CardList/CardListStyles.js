@@ -4,6 +4,7 @@
  *
  * @flow
  */
+import _ from 'lodash';
 import React from 'react-native';
 import colors from '../../constants/colors';
 import fonts from '../../constants/fonts';
@@ -14,7 +15,7 @@ const {
 
 const kMarginTop = 46;
 const kCellHeight = 120;
-const kCellMarginVertical = 7;
+const kCellMarginVertical = 10;
 const kCellMarginSide = 10;
 
  /**
@@ -45,7 +46,10 @@ const CardListStyles = StyleSheet.create({
   },
 
   // style properties of a text-element in a CardListElement
-  text: fonts.text,
+  text: _.assign({
+    margin: 20,
+  }, fonts.text),
+
 });
 
 export default CardListStyles;
