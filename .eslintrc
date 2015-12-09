@@ -3,5 +3,8 @@
   "parser": "babel-eslint",
   "plugins": [
     "flow-vars"
-  ]
+  ],
+  "rules": {
+    "react/jsx-boolean-value": 0,
+  }
 }

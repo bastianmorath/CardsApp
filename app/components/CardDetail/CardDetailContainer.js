@@ -10,13 +10,12 @@ const {
   PropTypes,
 } = React;
 import Nuclear from '../../nuclear/main';
-const {getters, reactor} = Nuclear;
+const {getters, reactor, actions} = Nuclear;
 
 import CardDetail from './CardDetail.js';
 
  /**
   * The CardDetailContainer is the data container for the CardDetail component.
-  * At the moment, it just loads some mock data.
   */
 const CardDetailContainer = React.createClass({
   displayName: 'CardDetailContainer',
@@ -35,12 +34,28 @@ const CardDetailContainer = React.createClass({
     };
   },
 
+  _updateFlashcardText(frontText: string, backText: string) {
+    if (this.props.flashcardId) {
+      actions.updateFlashcard(
+        this.props.flashcardId,
+        {
+          backText: backText,
+          frontText: frontText,
+        },
+      );
+    }
+  },
+
   render() {
     let flashcard = this.state.flashcards.get(this.props.flashcardId);
     flashcard = flashcard ? flashcard.toJS() : {};
 
     return (
-      <CardDetail flashcard={flashcard} isEditing={this.props.isEditing}/>
+      <CardDetail
+        flashcard={flashcard}
+        isEditing={this.props.isEditing}
+        updateFlashcard={this._updateFlashcardText}
+      />
     );
   },
 });

@@ -7,18 +7,20 @@
 
 import React from 'react-native';
 import Styles from './CardDetailStyles';
-import CardDetailTextView from './CardDetailTextView';
+
 import CustomPropTypes from '../../constants/CustomPropTypes';
 import Button from '../CustomComponents/CardButton.js';
+import CardDetailFlashcard from './CardDetailFlashcard';
 
 const {
   View,
-  ScrollView,
   PropTypes,
 } = React;
 
-/** The CardDetail is responsible
- * for displaying the front and backside of a flashcard.
+/**
+ * The CardDetail component is responsible for displayng the CardDetail Screen.
+ * The CardDetail component holds a CardDetailFlashcard component
+ * and a button component
  */
 const CardDetail = React.createClass({
   displayName: 'CardDetail',
@@ -26,6 +28,7 @@ const CardDetail = React.createClass({
   propTypes: {
     flashcard: CustomPropTypes.flashcard,
     isEditing: PropTypes.bool,
+    updateFlashcard: PropTypes.func,
   },
 
   getInitialState() {
@@ -39,23 +42,17 @@ const CardDetail = React.createClass({
   },
 
   render() {
-    const flashcard = this.props.flashcard || {};
     const buttonType = this.state.isEditing ? 'edit' : 'done';
+
     return (
-    // The ScrollView holds two CardDetailTextViews that each display the
-    // frontText or backText, respectively.
+      /* This view  holds a CardDetailFlashcard and a Button
+      */
       <View style={Styles.scrollViewHolder}>
-        <ScrollView style={Styles.listView}>
-          <View style={Styles.flashcardHolder}>
-            <CardDetailTextView
-              text={flashcard.frontText}
-            />
-            <View style={Styles.separator}/>
-            <CardDetailTextView
-              text={flashcard.backText}
-            />
-          </View>
-        </ScrollView>
+        <CardDetailFlashcard
+          flashcard={this.props.flashcard}
+          updateFlashcard={this.props.updateFlashcard}
+          isEditing={this.state.isEditing}
+        />
         <Button
           style={Styles.editButton}
           onPress={this._onEditButtonPress}
