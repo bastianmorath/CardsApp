@@ -7,7 +7,6 @@
 
 import React from 'react-native';
 import Styles from './CardDetailStyles.js';
-import Subscribable from 'Subscribable';
 import CustomPropTypes from '../../constants/CustomPropTypes';
 
 const {
@@ -17,61 +16,56 @@ const {
   Text,
 } = React;
 
-/** CardDetailText component displays front or backText of a flashcard,
- *  either editable or not.
- * This component subscribes to the 'onEditButtonPressed' event from CardDetail
- * so it can update the flashcard accordingly
+/**
+ * CardDetailText component displays the front or backText of a flashcard,
+ * either editable or not.
  */
-
 const CardDetailText = React.createClass({
   propTypes: {
     flashcard: CustomPropTypes.flashcard,
     isEditing: PropTypes.bool,
     updateFlashcard: PropTypes.func,
-    events: PropTypes.object,
   },
 
-  mixins: [Subscribable.Mixin],
-
   getInitialState() {
+    const flashcard = this.props.flashcard || {};
     return {
-      frontText: this.props.flashcard.frontText,
-      backText: this.props.flashcard.backText,
+      frontText: flashcard.frontText,
+      backText: flashcard.backText,
     };
   },
 
-  componentDidMount() {
-    this.addListenerOn(this.props.events, 'onEditButtonPressed', this._onEditButtonPressed);
+  /**
+   * TODO: this method is responsible for storing the text data, when the edit state changes.
+   * We need a better solution for business logic processes that span multiple components.!
+   */
+  componentWillReceiveProps( nextProps: Object ) {
+    // are we transitioning from edit to non edit mode?
+    if (this.props.isEditing && !nextProps.isEditing) {
+      this._updateFlashcardWithCurrentState();
+    }
+    const flashcard = nextProps.flashcard;
+    this.setState( { frontText: flashcard.frontText, backText: flashcard.backText } );
   },
 
-  _onEditButtonPressed() {
-    this.props.updateFlashcard(this.state.frontText, this.state.backText);
-  },
-
-  _frontTextHasChanged(text) {
-    this.setState({
-      frontText: text,
-    });
-  },
-
-  _backTextHasChanged(text) {
-    this.setState({
-      backText: text,
-    });
-  },
-
-  _didEndEditing() {
-    this.props.updateFlashcard(this.state.frontText, this.state.backText);
+  /**
+   * Helper function: calls the updateFlashcard function with the current state values
+   * of frontText and backText.
+   */
+  _updateFlashcardWithCurrentState() {
+    const updateFlashcard = this.props.updateFlashcard;
+    if (updateFlashcard) {
+      updateFlashcard(this.state.frontText, this.state.backText );
+    }
   },
 
   _renderEditableTextView(): Object {
-    let component;
-    component = (
+    return (
       <View>
         <TextInput
           style={Styles.editableTextView}
-          onEndEditing={this._didEndEditing}
-          onChangeText={this._frontTextHasChanged}
+          onEndEditing={this._updateFlashcardWithCurrentState}
+          onChangeText={ (text) => {this.setState({frontText: text}); } }
           value={this.state.frontText}
           placeholder="Enter the front side of your flashcard"
           multiline={true}
@@ -79,41 +73,34 @@ const CardDetailText = React.createClass({
         <View style={Styles.separator}/>
         <TextInput
           style={Styles.editableTextView}
-          onEndEditing={this._didEndEditing}
-          onChangeText={this._backTextHasChanged}
+          onEndEditing={this._updateFlashcardWithCurrentState}
+          onChangeText={ (text) => {this.setState({backText: text}); } }
           value={this.state.backText}
           placeholder="Enter the back side of your flashcard"
           multiline={true}
         />
       </View>
     );
-    return component;
   },
 
   _renderTextView(): Object {
-    let component;
-    component = (
+    const flashcard = this.props.flashcard || {};
+    return (
       <View>
         <View style={Styles.detailTextView}>
-          <Text style={Styles.textView}>{this.props.flashcard.frontText}</Text>
+          <Text style={Styles.textView}>{flashcard.frontText}</Text>
         </View>
         <View style={Styles.separator}/>
         <View style={Styles.detailTextView}>
-          <Text style={Styles.textView}>{this.props.flashcard.backText}</Text>
+          <Text style={Styles.textView}>{flashcard.backText}</Text>
         </View>
       </View>
     );
-    return component;
   },
 
-  render() {
+  render(): Object {
     const component = this.props.isEditing ? this._renderEditableTextView() : this._renderTextView();
-
-    return (
-      <View>
-        {component}
-      </View>
-    );
+    return component;
   },
 });
 

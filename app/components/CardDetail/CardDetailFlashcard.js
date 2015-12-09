@@ -16,18 +16,16 @@ const {
   PropTypes,
 } = React;
 
-/** CardDetailFlashcard component is the flashcard itself with
+/** CardDetailFlashcard component displays the flashcard itself with
  *  Text, Tags, user, etc.
  *  Right now, it holds CardDetailText components to display
  *  the front- and backText of a flashcard
  */
-
 const CardDetailFlashcard = React.createClass({
   propTypes: {
     flashcard: CustomPropTypes.flashcard,
     isEditing: PropTypes.bool,
     updateFlashcard: PropTypes.func,
-    events: PropTypes.object,
   },
 
   render() {
@@ -39,7 +37,6 @@ const CardDetailFlashcard = React.createClass({
               flashcard={this.props.flashcard}
               isEditing={this.props.isEditing}
               updateFlashcard={this.props.updateFlashcard}
-              events={this.props.events}
             />
           </View>
         </ScrollView>
