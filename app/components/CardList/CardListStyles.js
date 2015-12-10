@@ -17,14 +17,19 @@ const kMarginTop = 46;
 const kCellHeight = 120;
 const kCellMarginVertical = 10;
 const kCellMarginSide = 10;
+const kSize = 40; // Size of button; Also change its value in CardButtonStyle and CardDetailStyles!
 
  /**
  * This StyleSheet handles styles for CardList components.
  */
 const CardListStyles = StyleSheet.create({
   listViewHolder: {
-    backgroundColor: colors.LightGrey,
+    backgroundColor: colors.LightestGrey,
     flex: 1,
+  },
+
+  listViewHolderEditMode: {
+    backgroundColor: colors.LightGrey,
   },
 
   listView: {
@@ -50,6 +55,10 @@ const CardListStyles = StyleSheet.create({
     margin: 20,
   }, fonts.text),
 
+  editButton: {
+    right: 2 * kCellMarginSide + 10,
+    top: kMarginTop - kSize / 2,
+  },
 });
 
 export default CardListStyles;

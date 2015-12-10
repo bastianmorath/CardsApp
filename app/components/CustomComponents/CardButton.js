@@ -21,7 +21,7 @@ const {
 *
 * onPress: Function that should be called when the button is pressed
 * style: Style of the button
-* buttonType: 'edit' or 'done'
+* buttonType: 'edit' or 'done' or 'delete'
 *
 */
 const CardButton = React.createClass({
@@ -34,29 +34,30 @@ const CardButton = React.createClass({
   },
 
   _renderButtonComponent(): Object {
-    let buttonComponent;
-
-    // set the image according to the button type
-    if (this.props.buttonType === 'edit') {
-      buttonComponent = (
-       <Image
-         style={Styles.icon}
-          source={require('../../../Resources/done.png')}
-         />
-     );
-    } else {
-      buttonComponent = (
-       <Image
-         style={Styles.icon}
-          source={require('../../../Resources/edit.png')}
-         />
-     );
+    let source;
+    switch (this.props.buttonType) {
+    case 'edit':
+      source = require('../../../Resources/edit.png');
+      break;
+    case 'done':
+      source = require('../../../Resources/done.png');
+      break;
+    case 'delete':
+      source = require('../../../Resources/delete.png');
+      break;
+    default:
+      source = '../../../Resources/delete.png';
     }
-    return buttonComponent;
+    return (
+      <Image
+        style={Styles.icon}
+        source={source}
+      />
+    );
   },
 
   render() {
-    const color = this.props.buttonType === 'edit' ? colors.Green : colors.Red;
+    const color = this.props.buttonType === 'done' ? colors.Orange : colors.DarkGrey;
     const buttonComponent = this._renderButtonComponent();
 
     return (

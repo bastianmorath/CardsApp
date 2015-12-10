@@ -11,7 +11,7 @@ const {
    StyleSheet,
 } = React;
 
-const kSize = 40; // Size of button; Also change its value in CardDetailStyles!
+const kSize = 40; // Size of button; Also change its value in CardDetailStyles and CardListStyles!
 
 const CardButtonStyles = StyleSheet.create({
   button: {
