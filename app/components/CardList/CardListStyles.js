@@ -52,7 +52,7 @@ const CardListStyles = StyleSheet.create({
   }, fonts.text),
 
   editButton: {
-    right: 2 * kCellMarginSide + 10,
+    left: 2 * kCellMarginSide + 10,
     top: kMarginTop - kSize / 2,
   },
 });
