@@ -62,9 +62,9 @@ const CardList = React.createClass({
 
   render() {
     const buttonType = this.state.isDeleting ? 'done' : 'delete';
-
+    const style = this.state.isDeleting ? Styles.listViewHolderDeleteMode : Styles.listViewHolderNonDeleteMode;
     return (
-      <View style={Styles.listViewHolder}>
+      <View style={style}>
         <ListView
           style={Styles.listView}
           dataSource={this.state.dataSource}

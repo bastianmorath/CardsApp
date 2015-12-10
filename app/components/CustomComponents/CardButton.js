@@ -57,7 +57,7 @@ const CardButton = React.createClass({
   },
 
   render() {
-    const color = this.props.buttonType === 'done' ? colors.Red : colors.Green;
+    const color = this.props.buttonType === 'done' ? colors.Orange : colors.DarkGrey;
     const buttonComponent = this._renderButtonComponent();
 
     return (

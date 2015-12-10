@@ -23,8 +23,12 @@ const kSize = 40; // Size of button; Also change its value in CardButtonStyle an
  * This StyleSheet handles styles for CardList components.
  */
 const CardListStyles = StyleSheet.create({
-  listViewHolder: {
+  listViewHolderDeleteMode: {
     backgroundColor: colors.LightGrey,
+    flex: 1,
+  },
+  listViewHolderNonDeleteMode: {
+    backgroundColor: colors.LightestGrey,
     flex: 1,
   },
 
@@ -52,7 +56,7 @@ const CardListStyles = StyleSheet.create({
   }, fonts.text),
 
   editButton: {
-    left: 2 * kCellMarginSide + 10,
+    right: 2 * kCellMarginSide + 10,
     top: kMarginTop - kSize / 2,
   },
 });
