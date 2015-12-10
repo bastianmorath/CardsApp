@@ -42,8 +42,9 @@ const CardDetail = React.createClass({
   },
 
   render() {
-    const buttonType = this.state.isEditing ? 'done' : 'edit';
-    const style = this.state.isEditing ? Styles.scrollViewHolderEditMode : Styles.scrollViewHolderNonEditMode;
+    const isEditing = this.state.isEditing;
+    const buttonType = isEditing ? 'done' : 'edit';
+    const style = [Styles.scrollViewHolder, isEditing && Styles.scrollViewHolderEditMode];
     return (
       /* This view  holds a CardDetailFlashcard and a Button
       */

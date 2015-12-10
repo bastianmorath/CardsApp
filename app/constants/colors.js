@@ -7,7 +7,6 @@
 
 const colors = {
   AntumColor: '#3cdbc0',
-
   DarkGrey: '#323232',
   Grey: '#a0a0a0',
   LightGrey: '#dcdcdc',

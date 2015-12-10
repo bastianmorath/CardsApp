@@ -23,13 +23,13 @@ const kSize = 40; // Size of button; Also change its value in CardButtonStyle an
 */
 const CardDetailStyles = StyleSheet.create({
 
-  scrollViewHolderEditMode: {
-    backgroundColor: colors.LightGrey,
-    flex: 1,
-  },
-  scrollViewHolderNonEditMode: {
+  scrollViewHolder: {
     backgroundColor: colors.LightestGrey,
     flex: 1,
+  },
+
+  scrollViewHolderEditMode: {
+    backgroundColor: colors.LightGrey,
   },
 
   flashcardHolder: {

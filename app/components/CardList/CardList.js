@@ -30,7 +30,7 @@ const CardList = React.createClass({
   getInitialState() {
     return {
       dataSource: this._getListViewDataSource(this.props.flashcards),
-      isDeleting: false,
+      isEditing: false,
     };
   },
 
@@ -51,7 +51,7 @@ const CardList = React.createClass({
   },
 
   _onEditButtonPress() {
-    this.setState({isDeleting: !this.state.isDeleting});
+    this.setState({isEditing: !this.state.isEditing});
   },
 
   _renderRow(rowData: Object) {
@@ -61,8 +61,9 @@ const CardList = React.createClass({
   },
 
   render() {
-    const buttonType = this.state.isDeleting ? 'done' : 'delete';
-    const style = this.state.isDeleting ? Styles.listViewHolderDeleteMode : Styles.listViewHolderNonDeleteMode;
+    const isEditing = this.state.isEditing;
+    const buttonType = isEditing ? 'done' : 'delete';
+    const style = [Styles.listViewHolder, isEditing && Styles.listViewHolderEditMode];
     return (
       <View style={style}>
         <ListView
