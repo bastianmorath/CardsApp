@@ -8,6 +8,7 @@ import React from 'react-native';
 import CardListElement from './CardListElement';
 import Styles from './CardListStyles.js';
 import CustomPropTypes from '../../constants/CustomPropTypes';
+import Button from '../CustomComponents/CardButton.js';
 
 const {
   PropTypes,
@@ -29,6 +30,7 @@ const CardList = React.createClass({
   getInitialState() {
     return {
       dataSource: this._getListViewDataSource(this.props.flashcards),
+      isDeleting: false,
     };
   },
 
@@ -48,6 +50,10 @@ const CardList = React.createClass({
     return ds.cloneWithRows(flashcards);
   },
 
+  _onEditButtonPress() {
+    this.setState({isDeleting: !this.state.isDeleting});
+  },
+
   _renderRow(rowData: Object) {
     return (
       <CardListElement flashcard={rowData}/>
@@ -55,12 +61,19 @@ const CardList = React.createClass({
   },
 
   render() {
+    const buttonType = this.state.isDeleting ? 'done' : 'delete';
+
     return (
       <View style={Styles.listViewHolder}>
         <ListView
           style={Styles.listView}
           dataSource={this.state.dataSource}
           renderRow={this._renderRow}
+        />
+        <Button
+          style={Styles.editButton}
+          onPress={this._onEditButtonPress}
+          buttonType={buttonType}
         />
       </View>
     );

@@ -42,7 +42,7 @@ const CardDetail = React.createClass({
   },
 
   render() {
-    const buttonType = this.state.isEditing ? 'edit' : 'done';
+    const buttonType = this.state.isEditing ? 'done' : 'edit';
 
     return (
       /* This view  holds a CardDetailFlashcard and a Button
