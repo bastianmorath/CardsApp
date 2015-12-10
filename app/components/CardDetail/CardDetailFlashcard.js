@@ -19,7 +19,9 @@ const {
 /** CardDetailFlashcard component displays the flashcard itself with
  *  Text, Tags, user, etc.
  *  Right now, it holds CardDetailText components to display
- *  the front- and backText of a flashcard
+ *  the front- and backText of a flashcard. At the moment most of the code of CardDetailFlashcard
+ *  lives in CardDetailText. This is good design, because there will be other components
+ *  that we need to display on the flashcard.
  */
 const CardDetailFlashcard = React.createClass({
   propTypes: {

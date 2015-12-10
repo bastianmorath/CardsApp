@@ -68,7 +68,9 @@ const CardDetailStyles = StyleSheet.create({
     top: kMarginTop - kSize / 2,
   },
 
-  // Style properties of a CardDetail TextView
+  /**
+   * Style properties of a CardDetail TextView
+   */
   detailTextView: {
     backgroundColor: 'white',
   },
