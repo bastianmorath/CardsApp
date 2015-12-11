@@ -69,7 +69,7 @@ const CardDetailStyles = StyleSheet.create({
 
   editButton: {
     right: 2 * kCellMarginSide + 10,
-    top: kMarginTop - kSize / 2,
+    top: kMarginTop - kSize * 0.5,
   },
 
   /**

@@ -56,7 +56,7 @@ const CardList = React.createClass({
 
   _renderRow(rowData: Object) {
     return (
-      <CardListElement flashcard={rowData}/>
+      <CardListElement flashcard={rowData} isEditing={this.state.isEditing}/>
     );
   },
 
