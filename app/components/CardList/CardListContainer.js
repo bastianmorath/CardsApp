@@ -8,7 +8,7 @@
 import React from 'react-native';
 import CardList from './CardList';
 import Nuclear from '../../nuclear/main';
-const {reactor, getters} = Nuclear;
+const {reactor, getters, actions} = Nuclear;
 
 /**
  * The CardListContainer is the data container for the CardList component.
@@ -27,10 +27,16 @@ const CardListContainer = React.createClass({
     };
   },
 
+  _deleteFlashcardById(flashcardId: String) {
+    actions.deleteFlashcard(flashcardId);
+  },
+
   render() {
     const flashcards = this.state.flashcards.toJS();
     return (
-      <CardList flashcards={flashcards} />
+      <CardList
+      flashcards={flashcards}
+      deleteFlashcardById={this._deleteFlashcardById}/>
     );
   },
 });

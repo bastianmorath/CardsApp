@@ -28,9 +28,11 @@ const CardListElement = React.createClass({
   propTypes: {
     flashcard: CustomPropTypes.flashcard,
     isEditing: PropTypes.bool,
+    deleteFlashcardById: PropTypes.func,
   },
 
   _onDeleteButtonPress() {
+    this.props.deleteFlashcardById(this.props.flashcard.id);
   },
 
   _renderDeleteButton(): Object {
@@ -38,7 +40,7 @@ const CardListElement = React.createClass({
       return (
         <Button
           style={Styles.deleteButton}
-          onPress={this._onDeleteButtonPressed}
+          onPress={this._onDeleteButtonPress}
           buttonType="delete"
           size="small"
         />

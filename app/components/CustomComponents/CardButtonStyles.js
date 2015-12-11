@@ -11,7 +11,7 @@ const {
 } = React;
 
 const kSize = 40; // Size of button; Also change its value in CardDetailStyles and CardListStyles!
-const kButtonSizeSmall = 0.5 * kSize;
+const kButtonSizeSmall = 0.6 * kSize;
 const kButtonSizeBig = 1.5 * kSize;
 const kMarginTop = 46; // Margin on top of views, so to center the button vertically
 

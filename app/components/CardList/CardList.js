@@ -25,6 +25,7 @@ const CardList = React.createClass({
 
   propTypes: {
     flashcards: PropTypes.arrayOf(CustomPropTypes.flashcard).isRequired,
+    deleteFlashcardById: PropTypes.func,
   },
 
   getInitialState() {
@@ -56,7 +57,11 @@ const CardList = React.createClass({
 
   _renderRow(rowData: Object) {
     return (
-      <CardListElement flashcard={rowData} isEditing={this.state.isEditing}/>
+      <CardListElement
+        flashcard={rowData}
+        isEditing={this.state.isEditing}
+        deleteFlashcardById={this.props.deleteFlashcardById}
+      />
     );
   },
 
