@@ -30,7 +30,7 @@ const CardListElement = React.createClass({
     isEditing: PropTypes.bool,
   },
 
-  _onDeleteButtonPressed() {
+  _onDeleteButtonPress() {
   },
 
   _renderDeleteButton(): Object {
@@ -39,8 +39,8 @@ const CardListElement = React.createClass({
         <Button
           style={Styles.deleteButton}
           onPress={this._onDeleteButtonPressed}
-          buttonType={"delete"}
-          size={"small"}
+          buttonType="delete"
+          size="small"
         />
       );
     }
@@ -57,7 +57,7 @@ const CardListElement = React.createClass({
           <View style={Styles.cell}>
             <Text style={Styles.text}>{flashcard.frontText}</Text>
           </View>
-      </TouchableWithoutFeedback>
+        </TouchableWithoutFeedback>
         {deleteButton}
     </View>
     );

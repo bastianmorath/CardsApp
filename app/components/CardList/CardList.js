@@ -62,7 +62,7 @@ const CardList = React.createClass({
 
   render() {
     const isEditing = this.state.isEditing;
-    const buttonType = isEditing ? 'done' : 'delete';
+    const buttonType = isEditing ? 'done' : 'edit';
     const style = [Styles.listViewHolder, isEditing && Styles.listViewHolderEditMode];
     return (
       <View style={style}>

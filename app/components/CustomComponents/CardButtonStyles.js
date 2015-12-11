@@ -23,10 +23,6 @@ const CardButtonStyles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: kSize * 0.5,
     position: 'absolute',
-    shadowRadius: 15,
-    shadowOffset: {width: 10, height: 10},
-    shadowColor: 'grey',
-    shadowOpacity: 1.0,
   },
 
   buttonSmall: {

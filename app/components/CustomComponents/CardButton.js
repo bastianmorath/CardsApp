@@ -48,7 +48,7 @@ const CardButton = React.createClass({
       break;
     default:
       // TODO: Put place holder image here.
-      source = require('../../../Resources/delete.png');
+      source = require('../../../Resources/question.png');
     }
     return (
       <Image
