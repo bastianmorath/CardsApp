@@ -42,12 +42,13 @@ const CardDetail = React.createClass({
   },
 
   render() {
-    const buttonType = this.state.isEditing ? 'edit' : 'done';
-
+    const isEditing = this.state.isEditing;
+    const buttonType = isEditing ? 'done' : 'edit';
+    const style = [Styles.scrollViewHolder, isEditing && Styles.scrollViewHolderEditMode];
     return (
       /* This view  holds a CardDetailFlashcard and a Button
       */
-      <View style={Styles.scrollViewHolder}>
+      <View style={style}>
         <CardDetailFlashcard
           flashcard={this.props.flashcard}
           updateFlashcard={this.props.updateFlashcard}

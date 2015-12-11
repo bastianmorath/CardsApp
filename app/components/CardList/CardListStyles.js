@@ -23,8 +23,12 @@ const kCellMarginSide = 10;
  */
 const CardListStyles = StyleSheet.create({
   listViewHolder: {
-    backgroundColor: colors.LightGrey,
+    backgroundColor: colors.LightestGrey,
     flex: 1,
+  },
+
+  listViewHolderEditMode: {
+    backgroundColor: colors.LightGrey,
   },
 
   listView: {
@@ -49,6 +53,15 @@ const CardListStyles = StyleSheet.create({
   text: _.assign({
     margin: 20,
   }, fonts.text),
+
+  editButton: {
+    right: 2 * kCellMarginSide + 10,
+  },
+
+  deleteButton: {
+    right: 2 * kCellMarginSide,
+    top: kCellMarginSide,
+  },
 
 });
 

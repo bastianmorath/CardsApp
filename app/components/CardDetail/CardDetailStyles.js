@@ -16,15 +16,17 @@ const {
 
 const kMarginTop = 46;
 const kCellMarginSide = 10;
-const kSize = 40; // Size of button; Also change its value in CardButtonStyle!
 
 /**
 * This StyleSheet handles styles for CardDetail components.
 */
 const CardDetailStyles = StyleSheet.create({
-
   scrollViewHolder: {
+    backgroundColor: colors.LightestGrey,
     flex: 1,
+  },
+
+  scrollViewHolderEditMode: {
     backgroundColor: colors.LightGrey,
   },
 
@@ -65,7 +67,6 @@ const CardDetailStyles = StyleSheet.create({
 
   editButton: {
     right: 2 * kCellMarginSide + 10,
-    top: kMarginTop - kSize / 2,
   },
 
   /**

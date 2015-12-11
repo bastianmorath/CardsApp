@@ -21,8 +21,8 @@ const {
 *
 * onPress: Function that should be called when the button is pressed
 * style: Style of the button
-* buttonType: 'edit' or 'done'
-*
+* buttonType: 'edit' or 'done' or 'delete'
+* size: 'small', 'default', 'big'
 */
 const CardButton = React.createClass({
   displayName: 'CardButton',
@@ -31,38 +31,47 @@ const CardButton = React.createClass({
     onPress: PropTypes.func,
     style: styleSheetPropType(textStylePropTypes),
     buttonType: PropTypes.string,
+    size: PropTypes.string,
   },
 
   _renderButtonComponent(): Object {
-    let buttonComponent;
-
-    // set the image according to the button type
-    if (this.props.buttonType === 'edit') {
-      buttonComponent = (
-       <Image
-         style={Styles.icon}
-          source={require('../../../Resources/done.png')}
-         />
-     );
-    } else {
-      buttonComponent = (
-       <Image
-         style={Styles.icon}
-          source={require('../../../Resources/edit.png')}
-         />
-     );
+    let source;
+    switch (this.props.buttonType) {
+    case 'edit':
+      source = require('../../../Resources/edit.png');
+      break;
+    case 'done':
+      source = require('../../../Resources/done.png');
+      break;
+    case 'delete':
+      source = require('../../../Resources/trash.png');
+      break;
+    default:
+      // TODO: Put place holder image here.
+      source = require('../../../Resources/question.png');
     }
-    return buttonComponent;
+    return (
+      <Image
+        style={Styles.icon}
+        source={source}
+      />
+    );
   },
 
   render() {
-    const color = this.props.buttonType === 'edit' ? colors.Green : colors.Red;
+    const color = this.props.buttonType === 'done' ? colors.Orange : colors.DarkGrey;
     const buttonComponent = this._renderButtonComponent();
-
+    const style = [
+      Styles.button,
+      {backgroundColor: color},
+      (this.props.size === 'small') && Styles.buttonSmall,
+      (this.props.size === 'big') && Styles.buttonBig,
+      this.props.style,
+    ];
     return (
       <TouchableHighlight
         onPress={this.props.onPress}
-        style={[Styles.button, this.props.style, {backgroundColor: color}]}>
+        style={style}>
         {buttonComponent}
       </TouchableHighlight>
     );
