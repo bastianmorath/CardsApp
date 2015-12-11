@@ -26,13 +26,17 @@ const {
  */
 const CardListElement = React.createClass({
   propTypes: {
-    flashcard: CustomPropTypes.flashcard,
+    flashcard: CustomPropTypes.flashcard.isRequired,
     isEditing: PropTypes.bool,
     deleteFlashcardById: PropTypes.func,
   },
 
   _onDeleteButtonPress() {
-    this.props.deleteFlashcardById(this.props.flashcard.id);
+    const deleteFlashcardById = this.props.deleteFlashcardById;
+    const flashcardId = this.props.flashcard.id;
+    if (deleteFlashcardById && flashcardId) {
+      deleteFlashcardById(flashcardId);
+    }
   },
 
   _renderDeleteButton(): Object {
@@ -46,6 +50,7 @@ const CardListElement = React.createClass({
         />
       );
     }
+    return (<View />);
   },
 
   render() {

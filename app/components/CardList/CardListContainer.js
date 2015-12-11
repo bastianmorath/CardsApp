@@ -27,7 +27,7 @@ const CardListContainer = React.createClass({
     };
   },
 
-  _deleteFlashcardById(flashcardId: String) {
+  _deleteFlashcardById(flashcardId: string) {
     actions.deleteFlashcard(flashcardId);
   },
 
