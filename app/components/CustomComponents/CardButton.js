@@ -22,7 +22,7 @@ const {
 * onPress: Function that should be called when the button is pressed
 * style: Style of the button
 * buttonType: 'edit' or 'done' or 'delete'
-*
+* size: 'small', 'default', 'big'
 */
 const CardButton = React.createClass({
   displayName: 'CardButton',
@@ -31,6 +31,7 @@ const CardButton = React.createClass({
     onPress: PropTypes.func,
     style: styleSheetPropType(textStylePropTypes),
     buttonType: PropTypes.string,
+    size: PropTypes.string,
   },
 
   _renderButtonComponent(): Object {
@@ -46,7 +47,8 @@ const CardButton = React.createClass({
       source = require('../../../Resources/delete.png');
       break;
     default:
-      source = '../../../Resources/delete.png';
+      // TODO: Put place holder image here.
+      source = require('../../../Resources/question.png');
     }
     return (
       <Image
@@ -59,11 +61,17 @@ const CardButton = React.createClass({
   render() {
     const color = this.props.buttonType === 'done' ? colors.Orange : colors.DarkGrey;
     const buttonComponent = this._renderButtonComponent();
-
+    const style = [
+      Styles.button,
+      {backgroundColor: color},
+      (this.props.size === 'small') && Styles.buttonSmall,
+      (this.props.size === 'big') && Styles.buttonBig,
+      this.props.style,
+    ];
     return (
       <TouchableHighlight
         onPress={this.props.onPress}
-        style={[Styles.button, this.props.style, {backgroundColor: color}]}>
+        style={style}>
         {buttonComponent}
       </TouchableHighlight>
     );

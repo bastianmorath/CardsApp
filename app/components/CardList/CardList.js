@@ -56,13 +56,13 @@ const CardList = React.createClass({
 
   _renderRow(rowData: Object) {
     return (
-      <CardListElement flashcard={rowData}/>
+      <CardListElement flashcard={rowData} isEditing={this.state.isEditing}/>
     );
   },
 
   render() {
     const isEditing = this.state.isEditing;
-    const buttonType = isEditing ? 'done' : 'delete';
+    const buttonType = isEditing ? 'done' : 'edit';
     const style = [Styles.listViewHolder, isEditing && Styles.listViewHolderEditMode];
     return (
       <View style={style}>
