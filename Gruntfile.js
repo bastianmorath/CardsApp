@@ -13,7 +13,7 @@ module.exports = function GruntInit(grunt) {
           clearRequireCache: true,
           require: 'babel/register',
         },
-        src: ['test/data/*.js'],
+        src: ['test/nuclear/*.js'],
       },
     },
 
