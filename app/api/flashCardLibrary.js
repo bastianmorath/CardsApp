@@ -17,7 +17,6 @@ _.each( _flashcards, (flashcard) => {
 /**
  * FlashCardLibrary is the API for all data operations regarding the flashcard data
  * objects.
- * @type {Object}
  */
 const FlashCardLibrary = {
   /**
