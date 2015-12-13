@@ -5,7 +5,6 @@
  * @flow
  */
 
-const TIMEOUT = 100;
 const USER_ID = 'luke';
 import _ from 'lodash';
 
@@ -46,6 +45,7 @@ const FlashCardLibrary = {
 
   /**
    * API method: batch creates flashcards in the database.
+   * TODO: what if a single create Request fails?
    */
   createFlashcards( flashcardsToCreate:Array<Object> ): Promise {
     if (!flashcardsToCreate) {
@@ -70,6 +70,7 @@ const FlashCardLibrary = {
   /**
    * API method: batch updates flashcards in the database.
    * Takes a map of updates to apply to the flashcards.
+   * TODO: what if a single update Request fails?
    */
   updateFlashcards( flashcardUpdatesMap: Object ): Promise {
     if (!flashcardUpdatesMap ) {
@@ -77,17 +78,19 @@ const FlashCardLibrary = {
       return Promise.reject();
     }
 
-    return new Promise( (resolve) => {
-      setTimeout( () => {
-        const updatedFlashcards = [];
-        _.each( flashcardUpdatesMap, (flashcardUpdates, flashcardId) => {
-          const flashcard = _.get(_flashcards, flashcardId );
-          _.assign(flashcard, _.omit(flashcardUpdates, 'id'));
-          updatedFlashcards.push( flashcard );
+    const promises = [];
+    _.each(flashcardUpdatesMap, (flashcardUpdates, flashcardId) => {
+      const flashcardToUpdate = _.merge(flashcardUpdates, {id: flashcardId});
+      promises.push( new Promise( (resolve, reject) =>{
+        CADataStore.updateEntityForUser(USER_ID, 'Flashcard', flashcardToUpdate, (err, flashcard) => {
+          if (err) {
+            return reject(err);
+          }
+          return resolve(flashcard);
         });
-        resolve( updatedFlashcards );
-      }, TIMEOUT);
+      }));
     });
+    return Promise.all(promises);
   },
 
   /**

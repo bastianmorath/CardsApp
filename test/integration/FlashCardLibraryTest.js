@@ -31,7 +31,27 @@ function throwError( err ) {
 
 function testUpdateFlashcards() {
   updateMessage('should update flashcards');
-  done();
+  FlashCardLibrary.fetchFlashcards()
+    .then( (flashcards) => {
+      const flashcardToUpdate = _.sample(flashcards);
+
+      const flashcardUpdates = { frontText: 'this is the updated text'};
+      const flashcardsUpdateMap = {};
+      _.set(flashcardsUpdateMap, flashcardToUpdate.id, flashcardUpdates );
+      FlashCardLibrary.updateFlashcards( flashcardsUpdateMap )
+        .then( (updatedFlashcards) => {
+          expect(updatedFlashcards).to.be.an('array');
+          _.each(updatedFlashcards, (updatedFlashcard) => {
+            expect(updatedFlashcard).to.be.an('object');
+            expect(updatedFlashcard.frontText).to.equal(flashcardUpdates.frontText);
+          });
+
+          updateMessage('updateFlashcard: correctly updated a flashcard');
+          done();
+        })
+        .catch( throwError );
+    })
+    .catch( throwError);
 }
 
 function testCreateFlashcards() {
@@ -46,7 +66,7 @@ function testCreateFlashcards() {
       flashcardData.id = flashcard.id;
       expect(flashcard).to.eql(flashcardData);
 
-      updateMessage('createFlashcard correctly created a new flashcard' );
+      updateMessage('createFlashcard: correctly created a new flashcard' );
       testUpdateFlashcards();
     })
     .catch( throwError );
@@ -63,7 +83,7 @@ function testFetchFlashcards() {
         expect(flashcard.id).to.be.a('string');
       });
 
-      updateMessage('fetchFlashcard correctly loaded flashcards from the database');
+      updateMessage('fetchFlashcard: correctly loaded flashcards from the database');
       testCreateFlashcards();
     })
     .catch( throwError );

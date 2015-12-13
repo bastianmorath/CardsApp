@@ -67,6 +67,21 @@ RCT_EXPORT_METHOD(createEntityForUser:(NSString *)userId entityName:(NSString *)
   }];
 }
 
+RCT_EXPORT_METHOD(updateEntityForUser:(NSString *)userId entityName:(NSString *)entityName withEntityData:(NSDictionary *)entityData callback:(RCTResponseSenderBlock)callback)
+{
+  NSError *err = [self checkUserId:userId];
+  if (err) {
+    return callback(@[errorDictionaryFromError(err)]);
+  }
+  CADataService *dataService = [self getOrCreateDataServiceForUserId:userId];
+  [dataService updateEntityWithName:entityName andEntityData:entityData callback:^(NSDictionary *entity, NSError *err) {
+    if (err) {
+      callback(@[errorDictionaryFromError(err)]);
+    }
+    callback(@[[NSNull null], entity]);
+  }];
+}
+
 RCT_EXPORT_METHOD(fetchEntitiesForUser:(NSString *)userId entityName:(NSString *)entityName callback:(RCTResponseSenderBlock)callback)
 {
   NSError *err = [self checkUserId:userId];

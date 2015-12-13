@@ -102,6 +102,27 @@
   [syncTable insert:entityData completion:callback];
 }
 
+- (void)updateEntityWithName:(NSString *)entityName andEntityData:(NSDictionary *)entityData callback:(CAItemResultBlock)callback
+{
+  NSError *err = [self checkDataStoreReady];
+  if (err) {
+    return callback(nil, err);
+  }
+  
+  if (!entityData) {
+    return callback(nil, [self entityDataIsNil]);
+  }
+  
+  MSSyncTable *syncTable = [_amsClient syncTableWithName:entityName];
+  if (!syncTable) {
+    return callback(nil, [self entityModelNotFound:entityName] );
+  }
+  
+  [syncTable update:entityData completion:^(NSError * _Nullable error) {
+    return callback(entityData, error );
+  }];
+}
+
 - (void)fetchEntityWithName:(NSString *)entityName callback:(CAArrayResultBlock)callback
 {
   NSError *err = [self checkDataStoreReady];
