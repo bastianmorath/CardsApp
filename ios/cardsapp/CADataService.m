@@ -83,7 +83,7 @@
 }
 
 #pragma mark Data Functions
-- (void)createEntityWithName:(NSString *)entityName andEntityData:(NSDictionary *)entityData callback:(CADataResultBlock)callback
+- (void)createEntityWithName:(NSString *)entityName andEntityData:(NSDictionary *)entityData callback:(CAItemResultBlock)callback
 {
   NSError *err = [self checkDataStoreReady];
   if (err) {
@@ -100,6 +100,64 @@
   }
   
   [syncTable insert:entityData completion:callback];
+}
+
+- (void)fetchEntityWithName:(NSString *)entityName callback:(CAArrayResultBlock)callback
+{
+  NSError *err = [self checkDataStoreReady];
+  if (err) {
+    return callback(nil, err);
+  }
+  
+  MSSyncTable *syncTable = [_amsClient syncTableWithName:entityName];
+  if (!syncTable) {
+    return callback(nil, [self entityModelNotFound:entityName] );
+  }
+  
+  NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]initWithEntityName: syncTable.name];
+  
+  NSArray *fetchedItems = [_managedObjectContext executeFetchRequest:fetchRequest error:&err];
+  if (err) {
+    return callback(nil, err);
+  }
+  callback([self coreDataObjectsToJsonConvertible:fetchedItems], nil);
+}
+
+/**
+ *  Helper function: takes an array of NSManagedObjects and transforms them into NSDictionaries.
+ *  Dates are stored in core data as NSData object and need to be transformed into a string.
+ *
+ *  @param coreDataObjects The NSManagedObjects to transform.
+ *
+ *  @return NSArray of NSDictionary
+ */
+- (NSArray *)coreDataObjectsToJsonConvertible:(NSArray *)coreDataObjects
+{
+  NSMutableArray *resultData = [NSMutableArray array];
+  
+  for (NSManagedObject *coreDataObject in coreDataObjects) {
+    NSArray *keys = [[[coreDataObject entity] attributesByName] allKeys];
+    NSMutableDictionary *dict = [[coreDataObject dictionaryWithValuesForKeys:keys]mutableCopy];
+    
+    // check if there are any dates in the dict, because we need to convert them into Strings
+    // TODO refactor this using underscore.m
+    NSMutableDictionary *datesToUpdate = [[NSMutableDictionary alloc]init];
+    for (NSString *key in dict) {
+      NSObject *value = [dict valueForKey:key];
+      if ([value isKindOfClass:[NSDate class]]) {
+        NSDate *date = (NSDate *)value;
+        [datesToUpdate setValue:[NSNumber numberWithDouble:[date timeIntervalSince1970]] forKey:key];
+      }
+    }
+    
+    for (NSString *key in datesToUpdate) {
+      [dict setValue:[datesToUpdate valueForKey:key] forKey:key];
+    }
+    
+    [resultData addObject:dict];
+  }
+  
+  return resultData;
 }
 
 #pragma mark Error Handling

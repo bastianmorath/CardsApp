@@ -52,6 +52,23 @@ function testCreateFlashcards() {
     .catch( throwError );
 }
 
+function testFetchFlashcards() {
+  updateMessage('should fetch flashcards');
+  FlashCardLibrary.fetchFlashcards()
+    .then( (flashcards) => {
+      expect(flashcards).to.be.an('array');
+
+      _.each(flashcards, (flashcard) => {
+        expect(flashcard).to.be.an('object');
+        expect(flashcard.id).to.be.a('string');
+      });
+
+      updateMessage('fetchFlashcard correctly loaded flashcards from the database');
+      testCreateFlashcards();
+    })
+    .catch( throwError );
+}
+
 const FlashCardLibraryTest = React.createClass({
   getInitialState() {
     return {
@@ -66,7 +83,7 @@ const FlashCardLibraryTest = React.createClass({
       this.setState({messages: this.state.messages.concat('\n' + msg)});
       DEBUG && console.log(msg); //eslint-disable-line
     };
-    testCreateFlashcards();
+    testFetchFlashcards();
   },
 
   render() {

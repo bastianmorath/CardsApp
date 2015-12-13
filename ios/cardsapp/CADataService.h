@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 
 typedef void (^CACompletionBlock) ();
-typedef void (^CADataResultBlock) (NSDictionary *entity, NSError *err);
+typedef void (^CAItemResultBlock) (NSDictionary *entity, NSError *err);
+typedef void (^CAArrayResultBlock)(NSArray *entities, NSError *err);
 typedef void (^CAErrorBlock) (NSError *err );
 
 /**
@@ -27,7 +28,15 @@ typedef void (^CAErrorBlock) (NSError *err );
  *  @param entityData NSDictionary containing the data to insert.
  *  @param callback   Callback takes an optional error and result object.
  */
-- (void)createEntityWithName:(NSString *)entityName andEntityData:(NSDictionary *)entityData callback:(CADataResultBlock)callback;
+- (void)createEntityWithName:(NSString *)entityName andEntityData:(NSDictionary *)entityData callback:(CAItemResultBlock)callback;
+
+/**
+ *  Fetch all entries of an entity from the database and transforms the NSManagedObjects into dictionaries.
+ *
+ *  @param entityName The name of the entity to fetch.
+ *  @param callback   Callback takes an optional error and an array of NSDictionaries containing the data.
+ */
+- (void)fetchEntityWithName:(NSString *)entityName callback:(CAArrayResultBlock)callback;
 
 @property (nonatomic, strong) NSString *userId;
 

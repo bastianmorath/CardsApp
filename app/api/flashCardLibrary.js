@@ -34,10 +34,13 @@ const FlashCardLibrary = {
    * Fetches all flashcards of a user from the database.
    */
   fetchFlashcards(): Promise {
-    return new Promise( (resolve) => {
-      setTimeout( () => {
-        resolve( _flashcards );
-      }, TIMEOUT);
+    return new Promise( (resolve, reject) => {
+      CADataStore.fetchEntitiesForUser(USER_ID, 'Flashcard', (err, flashcards) => {
+        if (err) {
+          return reject(err);
+        }
+        return resolve(flashcards);
+      });
     });
   },
 
