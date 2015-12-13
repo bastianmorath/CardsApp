@@ -12,7 +12,7 @@
 
 @interface CADataStore()
 
-@property (nonatomic,strong) NSDictionary *dataServicesByUser;
+@property (nonatomic,strong) NSMutableDictionary *dataServicesByUser;
 
 @end
 
@@ -24,17 +24,17 @@ RCT_EXPORT_MODULE()
 {
   self = [super init];
   if (self) {
-    _dataServicesByUser = [[NSDictionary alloc]init];
+    _dataServicesByUser = [[NSMutableDictionary alloc]init];
   }
   return self;
 }
 
-- (CADataService *)getOrCreateDataServiceForUserId:(NSString *)userid
+- (CADataService *)getOrCreateDataServiceForUserId:(NSString *)userId
 {
-  CADataService *dataService = [_dataServicesByUser objectForKey:userid];
+  CADataService *dataService = [_dataServicesByUser objectForKey:userId];
   if (!dataService) {
-    dataService = [[CADataService alloc]init];
-    [_dataServicesByUser setValue:dataService forKey:userid];
+    dataService = [[CADataService alloc]initWithUserId:userId];
+    [_dataServicesByUser setValue:dataService forKey:userId];
   }
   return dataService;
 }
@@ -58,7 +58,6 @@ RCT_EXPORT_METHOD(createEntityForUser:(NSString *)userId entityName:(NSString *)
   if (err) {
     return callback(@[errorDictionaryFromError(err)]);
   }
-  
   CADataService *dataService = [self getOrCreateDataServiceForUserId:userId];
   [dataService createEntityWithName:entityName andEntityData:entityData callback:^(NSDictionary *entity, NSError *err) {
     if (err) {

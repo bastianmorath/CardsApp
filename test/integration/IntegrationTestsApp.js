@@ -6,6 +6,7 @@
 * @flow
 */
 
+import _ from 'lodash';
 import React from 'react-native';
 const {
   AppRegistry,
@@ -39,7 +40,7 @@ const TESTS = [
   require('./FlashCardLibraryTest'),
 ];
 
-TESTS.forEach(
+_.each(TESTS,
   (test) => AppRegistry.registerComponent(test.displayName, () => test)
 );
 
@@ -70,7 +71,7 @@ const IntegrationTestsApp = React.createClass({
         </Text>
         <View style={styles.separator} />
         <ScrollView>
-          {TESTS.map((test) => [
+          {_.map(TESTS, (test) => [
             <TouchableOpacity
               onPress={() => this.setState({test})}
               style={styles.row}>

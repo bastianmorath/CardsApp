@@ -6,7 +6,18 @@
  */
 
 const TIMEOUT = 100;
+const USER_ID = 'luke';
 import _ from 'lodash';
+
+// TODO: This is an ugly fix, but otherwise the mocha tests do not work (because they can't require React)
+let React;
+try {
+  React = require('react-native');
+} catch (e) {
+  React = {NativeModules: {}};
+}
+const { CADataStore } = React.NativeModules;
+
 import _flashcards from '../../test/mock/flashcard';
 let idCounter = 0;
 _.each( _flashcards, (flashcard) => {
@@ -39,16 +50,18 @@ const FlashCardLibrary = {
       return Promise.reject();
     }
 
-    return new Promise( (resolve) => {
-      setTimeout( () => {
-        _.each( flashcardsToCreate, (flashcard) => {
-          flashcard.id = idCounter.toString();
-          _flashcards.push( flashcard );
-          idCounter++;
+    const promises = [];
+    _.each(flashcardsToCreate, (flashcardToCreate) => {
+      promises.push( new Promise( (resolve, reject) =>{
+        CADataStore.createEntityForUser(USER_ID, 'Flashcard', _.omit(flashcardToCreate, 'id'), (err, flashcard) => {
+          if (err) {
+            return reject(err);
+          }
+          return resolve(flashcard);
         });
-        resolve( flashcardsToCreate );
-      }, TIMEOUT );
+      }) );
     });
+    return Promise.all(promises);
   },
 
   /**

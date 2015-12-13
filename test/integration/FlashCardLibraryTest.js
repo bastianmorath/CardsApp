@@ -3,6 +3,7 @@
 * @copyright ::  Bastian Morath and Lukas Reichart
 *
 *	Tests for the flashCardLibary. This tests use the objective-c code.
+* @flow
 */
 
 import _ from 'lodash';
@@ -24,11 +25,8 @@ let done = (result : ?boolean) => result;
 let updateMessage = (message : string ) => message;
 
 function throwError( err ) {
-  if (TestModule) {
-    throw err;
-  } else {
-    logError(err.message);
-  }
+  TestModule.markTestPassed(false);
+  logError(err.message);
 }
 
 function testUpdateFlashcards() {
@@ -63,8 +61,7 @@ const FlashCardLibraryTest = React.createClass({
   },
 
   componentDidMount() {
-    // , TestModule.markTestCompleted
-    done = () => this.setState({done: true});
+    done = () => this.setState({done: true}, TestModule.markTestCompleted);
     updateMessage = (msg) => {
       this.setState({messages: this.state.messages.concat('\n' + msg)});
       DEBUG && console.log(msg); //eslint-disable-line
