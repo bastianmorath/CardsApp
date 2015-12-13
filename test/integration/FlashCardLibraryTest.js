@@ -29,6 +29,26 @@ function throwError( err ) {
   logError(err.message);
 }
 
+function testDeleteFlashcards() {
+  updateMessage('should delete flashcard' );
+  FlashCardLibrary.fetchFlashcards()
+    .then( (flashcards) => {
+      const flashcardIdsToDelete = _.pluck(_.sample(flashcards, 1), 'id' );
+      FlashCardLibrary.deleteFlashcards( flashcardIdsToDelete )
+        .then( (flashcardIds) => {
+          expect(flashcardIds).to.be.an('array');
+          _.each(flashcardIds, (flashcardId) => {
+            expect(flashcardId).to.be.a('string');
+          });
+
+          updateMessage('deleteFlashcard: correctly deleted a flashcard');
+          done();
+        })
+        .catch(throwError);
+    })
+    .catch(throwError);
+}
+
 function testUpdateFlashcards() {
   updateMessage('should update flashcards');
   FlashCardLibrary.fetchFlashcards()
@@ -43,11 +63,12 @@ function testUpdateFlashcards() {
           expect(updatedFlashcards).to.be.an('array');
           _.each(updatedFlashcards, (updatedFlashcard) => {
             expect(updatedFlashcard).to.be.an('object');
+            expect(updatedFlashcard.id).to.be.a('string');
             expect(updatedFlashcard.frontText).to.equal(flashcardUpdates.frontText);
           });
 
           updateMessage('updateFlashcard: correctly updated a flashcard');
-          done();
+          testDeleteFlashcards();
         })
         .catch( throwError );
     })

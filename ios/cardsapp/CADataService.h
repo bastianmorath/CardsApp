@@ -39,6 +39,14 @@ typedef void (^CAErrorBlock) (NSError *err );
  */
 - (void)updateEntityWithName:(NSString *)entityName andEntityData:(NSDictionary *)entityData callback:(CAItemResultBlock)callback;
 
+/**
+ *  Deletes an etntiy in the database.
+ *
+ *  @param entityName Name of the Entity to delete
+ *  @param entityId   Id of the entity to delete.
+ *  @param callback   Callback takes an optional error
+ */
+- (void)deleteEntityWithName:(NSString *)entityName andEntityId:(NSString *)entityId callback:(CAErrorBlock)callback;
 
 /**
  *  Fetch all entries of an entity from the database and transforms the NSManagedObjects into dictionaries.

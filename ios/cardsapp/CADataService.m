@@ -123,6 +123,25 @@
   }];
 }
 
+- (void)deleteEntityWithName:(NSString *)entityName andEntityId:(NSString *)entityId callback:(CAErrorBlock)callback
+{
+  NSError *err = [self checkDataStoreReady];
+  if (err) {
+    return callback(err);
+  }
+  
+  if (!entityId) {
+    return callback([self entityDataIsNil]);
+  }
+  
+  MSSyncTable *syncTable = [_amsClient syncTableWithName:entityName];
+  if (!syncTable) {
+    return callback([self entityModelNotFound:entityName] );
+  }
+  
+  [syncTable delete:@{@"id": entityId} completion:callback];
+}
+
 - (void)fetchEntityWithName:(NSString *)entityName callback:(CAArrayResultBlock)callback
 {
   NSError *err = [self checkDataStoreReady];

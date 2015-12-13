@@ -103,15 +103,18 @@ const FlashCardLibrary = {
       return Promise.reject();
     }
 
-    return new Promise( (resolve) => {
-      setTimeout( () => {
-        // delete all the flashcards from the in memory map.
-        _.remove( _flashcards, (flashcard) => {
-          return _.find(flashcardIdsToDelete, flashcard.id );
+    const promises = [];
+    _.each(flashcardIdsToDelete, (flashcardIdToDelete) => {
+      promises.push( new Promise( (resolve, reject) =>{
+        CADataStore.deleteEntityForUser(USER_ID, 'Flashcard', flashcardIdToDelete, (err) => {
+          if (err) {
+            return reject(err);
+          }
+          return resolve(flashcardIdToDelete);
         });
-        resolve(flashcardIdsToDelete);
-      });
+      }));
     });
+    return Promise.all(promises);
   },
 };
 
