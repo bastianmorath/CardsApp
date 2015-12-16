@@ -21,6 +21,13 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
+		80CF26C21C1CDF67005C8A13 /* CardsAppIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 80CF26C11C1CDF67005C8A13 /* CardsAppIntegrationTests.m */; };
+		80CF26D31C1CDFB4005C8A13 /* libRCTTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80CF26D21C1CDFA9005C8A13 /* libRCTTest.a */; };
+		80DA47A01C21EC9B00FDC6C0 /* CADataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DA479B1C21EC9B00FDC6C0 /* CADataService.m */; };
+		80DA47A11C21EC9B00FDC6C0 /* CADataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DA479D1C21EC9B00FDC6C0 /* CADataStore.m */; };
+		80DA47A21C21EC9B00FDC6C0 /* CAErrorUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DA479F1C21EC9B00FDC6C0 /* CAErrorUtils.m */; };
+		80FF3F301C121A0900AD6D59 /* CardsappModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 80FF3F2E1C121A0900AD6D59 /* CardsappModel.xcdatamodeld */; };
+		80FF3F321C121B3E00AD6D59 /* MicrosoftAzureMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80FF3F311C121B3E00AD6D59 /* MicrosoftAzureMobile.framework */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		B6194FB21C13912D00153099 /* App Icon [Squared] in Resources */ = {isa = PBXBuildFile; fileRef = B6194FB11C13912D00153099 /* App Icon [Squared] */; };
 /* End PBXBuildFile section */
@@ -96,6 +103,13 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RCTLinking;
 		};
+		80CF26D11C1CDFA9005C8A13 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80CF26CD1C1CDFA8005C8A13 /* RCTTest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 580C376F1AB104AF0015E709;
+			remoteInfo = RCTTest;
+		};
 		832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */;
@@ -126,6 +140,17 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = cardsapp/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
+		8045DD831C21EB4200F5F35E /* CardsappModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CardsappModel.xcdatamodel; sourceTree = "<group>"; };
+		80CF26C11C1CDF67005C8A13 /* CardsAppIntegrationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardsAppIntegrationTests.m; sourceTree = "<group>"; };
+		80CF26CD1C1CDFA8005C8A13 /* RCTTest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTTest.xcodeproj; path = "../node_modules/react-native/Libraries/RCTTest/RCTTest.xcodeproj"; sourceTree = "<group>"; };
+		80DA479A1C21EC9B00FDC6C0 /* CADataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CADataService.h; path = cardsapp/CADataService.h; sourceTree = "<group>"; };
+		80DA479B1C21EC9B00FDC6C0 /* CADataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CADataService.m; path = cardsapp/CADataService.m; sourceTree = "<group>"; };
+		80DA479C1C21EC9B00FDC6C0 /* CADataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CADataStore.h; path = cardsapp/CADataStore.h; sourceTree = "<group>"; };
+		80DA479D1C21EC9B00FDC6C0 /* CADataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CADataStore.m; path = cardsapp/CADataStore.m; sourceTree = "<group>"; };
+		80DA479E1C21EC9B00FDC6C0 /* CAErrorUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAErrorUtils.h; path = cardsapp/CAErrorUtils.h; sourceTree = "<group>"; };
+		80DA479F1C21EC9B00FDC6C0 /* CAErrorUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAErrorUtils.m; path = cardsapp/CAErrorUtils.m; sourceTree = "<group>"; };
+		80FF3F2F1C121A0900AD6D59 /* CardsappModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CardsappModel.xcdatamodel; sourceTree = "<group>"; };
+		80FF3F311C121B3E00AD6D59 /* MicrosoftAzureMobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MicrosoftAzureMobile.framework; path = cardsapp/MicrosoftAzureMobile.framework; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		B6194FB11C13912D00153099 /* App Icon [Squared] */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "App Icon [Squared]"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -142,9 +167,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80CF26D31C1CDFB4005C8A13 /* libRCTTest.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
+				80FF3F321C121B3E00AD6D59 /* MicrosoftAzureMobile.framework in Frameworks */,
 				00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */,
 				133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */,
 				00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */,
@@ -201,6 +228,7 @@
 		00E356EF1AD99517003FC87E /* cardsappTests */ = {
 			isa = PBXGroup;
 			children = (
+				80CF26C11C1CDF67005C8A13 /* CardsAppIntegrationTests.m */,
 				00E356F21AD99517003FC87E /* cardsappTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
@@ -234,6 +262,7 @@
 		13B07FAE1A68108700A75B9A /* cardsapp */ = {
 			isa = PBXGroup;
 			children = (
+				8045DD701C21EB3000F5F35E /* DataStore */,
 				B6194FA61C13912300153099 /* AppIcons */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -262,9 +291,33 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		8045DD701C21EB3000F5F35E /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+				80DA479A1C21EC9B00FDC6C0 /* CADataService.h */,
+				80DA479B1C21EC9B00FDC6C0 /* CADataService.m */,
+				80DA479C1C21EC9B00FDC6C0 /* CADataStore.h */,
+				80DA479D1C21EC9B00FDC6C0 /* CADataStore.m */,
+				80DA479E1C21EC9B00FDC6C0 /* CAErrorUtils.h */,
+				80DA479F1C21EC9B00FDC6C0 /* CAErrorUtils.m */,
+				8045DD821C21EB4200F5F35E /* CardsappModel.xcdatamodeld */,
+			);
+			name = DataStore;
+			sourceTree = "<group>";
+		};
+		80CF26CE1C1CDFA8005C8A13 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				80CF26D21C1CDFA9005C8A13 /* libRCTTest.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				80CF26CD1C1CDFA8005C8A13 /* RCTTest.xcodeproj */,
+				80FF3F311C121B3E00AD6D59 /* MicrosoftAzureMobile.framework */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
 				00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */,
@@ -407,6 +460,10 @@
 					ProjectRef = 139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */;
 				},
 				{
+					ProductGroup = 80CF26CE1C1CDFA8005C8A13 /* Products */;
+					ProjectRef = 80CF26CD1C1CDFA8005C8A13 /* RCTTest.xcodeproj */;
+				},
+				{
 					ProductGroup = 832341B11AAA6A8300B99B32 /* Products */;
 					ProjectRef = 832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */;
 				},
@@ -495,6 +552,13 @@
 			remoteRef = 78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		80CF26D21C1CDFA9005C8A13 /* libRCTTest.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTTest.a;
+			remoteRef = 80CF26D11C1CDFA9005C8A13 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		832341B51AAA6A8300B99B32 /* libRCTText.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -546,6 +610,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80CF26C21C1CDF67005C8A13 /* CardsAppIntegrationTests.m in Sources */,
 				00E356F31AD99517003FC87E /* cardsappTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -554,7 +619,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80DA47A11C21EC9B00FDC6C0 /* CADataStore.m in Sources */,
+				80DA47A21C21EC9B00FDC6C0 /* CAErrorUtils.m in Sources */,
+				80DA47A01C21EC9B00FDC6C0 /* CADataService.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				80FF3F301C121A0900AD6D59 /* CardsappModel.xcdatamodeld in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -628,6 +697,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEAD_CODE_STRIPPING = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/cardsapp",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -649,6 +722,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/cardsapp",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -704,7 +781,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -744,7 +821,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -782,6 +859,31 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8045DD821C21EB4200F5F35E /* CardsappModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8045DD831C21EB4200F5F35E /* CardsappModel.xcdatamodel */,
+			);
+			currentVersion = 8045DD831C21EB4200F5F35E /* CardsappModel.xcdatamodel */;
+			name = CardsappModel.xcdatamodeld;
+			path = cardsapp/CardsappModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		80FF3F2E1C121A0900AD6D59 /* CardsappModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				80FF3F2F1C121A0900AD6D59 /* CardsappModel.xcdatamodel */,
+			);
+			currentVersion = 80FF3F2F1C121A0900AD6D59 /* CardsappModel.xcdatamodel */;
+			name = CardsappModel.xcdatamodeld;
+			path = cardsapp/CardsappModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 83CBB9F71A601CBA00E9B192 /* Project object */;
 }
