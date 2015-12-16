@@ -8,7 +8,7 @@ import React from 'react-native';
 import CardListElement from './CardListElement';
 import Styles from './CardListStyles.js';
 import CustomPropTypes from '../../constants/CustomPropTypes';
-
+import Button from '../CustomComponents/CardButton.js';
 
 const {
   PropTypes,
@@ -23,31 +23,63 @@ const {
 const CardList = React.createClass({
   displayName: 'CardList',
 
-  // add flashcards to the datasource of ListView
   propTypes: {
-    flashcards: PropTypes.arrayOf(CustomPropTypes.flashcard),
+    flashcards: PropTypes.arrayOf(CustomPropTypes.flashcard).isRequired,
+    deleteFlashcardById: PropTypes.func,
   },
 
   getInitialState() {
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.frontText !== r2.frontText});
     return {
-      dataSource: ds.cloneWithRows(this.props.flashcards),
+      dataSource: this._getListViewDataSource(this.props.flashcards),
+      isEditing: false,
     };
   },
 
-  renderRow(rowData) {
+  componentWillReceiveProps(nextProps: Object) {
+    if (nextProps) {
+      this.setState({
+        dataSource: this._getListViewDataSource(nextProps.flashcards),
+      });
+    }
+  },
+
+  /**
+   * Helper function that creates the ListView.DataSource object from the passed flashcard array.
+   */
+  _getListViewDataSource(flashcards: Array<Object>) {
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.frontText !== r2.frontText});
+    return ds.cloneWithRows(flashcards);
+  },
+
+  _onEditButtonPress() {
+    this.setState({isEditing: !this.state.isEditing});
+  },
+
+  _renderRow(rowData: Object) {
     return (
-      <CardListElement flashcard={rowData}/>
+      <CardListElement
+        flashcard={rowData}
+        isEditing={this.state.isEditing}
+        deleteFlashcardById={this.props.deleteFlashcardById}
+      />
     );
   },
 
   render() {
+    const isEditing = this.state.isEditing;
+    const buttonType = isEditing ? 'done' : 'edit';
+    const style = [Styles.listViewHolder, isEditing && Styles.listViewHolderEditMode];
     return (
-      <View style={Styles.listViewHolder}>
+      <View style={style}>
         <ListView
           style={Styles.listView}
           dataSource={this.state.dataSource}
-          renderRow={this.renderRow}
+          renderRow={this._renderRow}
+        />
+        <Button
+          style={Styles.editButton}
+          onPress={this._onEditButtonPress}
+          buttonType={buttonType}
         />
       </View>
     );

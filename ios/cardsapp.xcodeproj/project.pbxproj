@@ -23,12 +23,17 @@
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		8012617E1C1C4E0A004D7EEB /* CAErrorUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8012617D1C1C4E0A004D7EEB /* CAErrorUtils.m */; };
 		8044E2F71C19AC8000674A7E /* CADataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8044E2F61C19AC8000674A7E /* CADataService.m */; };
+		8045DD871C21EB4200F5F35E /* CardsappModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8045DD821C21EB4200F5F35E /* CardsappModel.xcdatamodeld */; };
 		80CF26C21C1CDF67005C8A13 /* CardsAppIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 80CF26C11C1CDF67005C8A13 /* CardsAppIntegrationTests.m */; };
 		80CF26D31C1CDFB4005C8A13 /* libRCTTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80CF26D21C1CDFA9005C8A13 /* libRCTTest.a */; };
+		80DA47A01C21EC9B00FDC6C0 /* CADataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DA479B1C21EC9B00FDC6C0 /* CADataService.m */; };
+		80DA47A11C21EC9B00FDC6C0 /* CADataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DA479D1C21EC9B00FDC6C0 /* CADataStore.m */; };
+		80DA47A21C21EC9B00FDC6C0 /* CAErrorUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DA479F1C21EC9B00FDC6C0 /* CAErrorUtils.m */; };
 		80FF3F301C121A0900AD6D59 /* CardsappModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 80FF3F2E1C121A0900AD6D59 /* CardsappModel.xcdatamodeld */; };
 		80FF3F321C121B3E00AD6D59 /* MicrosoftAzureMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80FF3F311C121B3E00AD6D59 /* MicrosoftAzureMobile.framework */; };
 		80FF3F351C1346B500AD6D59 /* CADataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FF3F341C1346B500AD6D59 /* CADataStore.m */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		B6194FB21C13912D00153099 /* App Icon [Squared] in Resources */ = {isa = PBXBuildFile; fileRef = B6194FB11C13912D00153099 /* App Icon [Squared] */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,17 +144,22 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = cardsapp/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
-		8012617C1C1C4E0A004D7EEB /* CAErrorUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAErrorUtils.h; path = cardsapp/CAErrorUtils.h; sourceTree = "<group>"; };
 		8012617D1C1C4E0A004D7EEB /* CAErrorUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAErrorUtils.m; path = cardsapp/CAErrorUtils.m; sourceTree = "<group>"; };
-		8044E2F51C19AC8000674A7E /* CADataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CADataService.h; path = cardsapp/CADataService.h; sourceTree = "<group>"; };
 		8044E2F61C19AC8000674A7E /* CADataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CADataService.m; path = cardsapp/CADataService.m; sourceTree = "<group>"; };
+		8045DD831C21EB4200F5F35E /* CardsappModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CardsappModel.xcdatamodel; sourceTree = "<group>"; };
 		80CF26C11C1CDF67005C8A13 /* CardsAppIntegrationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardsAppIntegrationTests.m; sourceTree = "<group>"; };
 		80CF26CD1C1CDFA8005C8A13 /* RCTTest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTTest.xcodeproj; path = "../node_modules/react-native/Libraries/RCTTest/RCTTest.xcodeproj"; sourceTree = "<group>"; };
+		80DA479A1C21EC9B00FDC6C0 /* CADataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CADataService.h; path = cardsapp/CADataService.h; sourceTree = "<group>"; };
+		80DA479B1C21EC9B00FDC6C0 /* CADataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CADataService.m; path = cardsapp/CADataService.m; sourceTree = "<group>"; };
+		80DA479C1C21EC9B00FDC6C0 /* CADataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CADataStore.h; path = cardsapp/CADataStore.h; sourceTree = "<group>"; };
+		80DA479D1C21EC9B00FDC6C0 /* CADataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CADataStore.m; path = cardsapp/CADataStore.m; sourceTree = "<group>"; };
+		80DA479E1C21EC9B00FDC6C0 /* CAErrorUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAErrorUtils.h; path = cardsapp/CAErrorUtils.h; sourceTree = "<group>"; };
+		80DA479F1C21EC9B00FDC6C0 /* CAErrorUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAErrorUtils.m; path = cardsapp/CAErrorUtils.m; sourceTree = "<group>"; };
 		80FF3F2F1C121A0900AD6D59 /* CardsappModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CardsappModel.xcdatamodel; sourceTree = "<group>"; };
 		80FF3F311C121B3E00AD6D59 /* MicrosoftAzureMobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MicrosoftAzureMobile.framework; path = cardsapp/MicrosoftAzureMobile.framework; sourceTree = "<group>"; };
-		80FF3F331C1346B500AD6D59 /* CADataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CADataStore.h; path = cardsapp/CADataStore.h; sourceTree = "<group>"; };
 		80FF3F341C1346B500AD6D59 /* CADataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CADataStore.m; path = cardsapp/CADataStore.m; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		B6194FB11C13912D00153099 /* App Icon [Squared] */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "App Icon [Squared]"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,7 +269,8 @@
 		13B07FAE1A68108700A75B9A /* cardsapp */ = {
 			isa = PBXGroup;
 			children = (
-				80FF3EFF1C11C7D500AD6D59 /* Store */,
+				8045DD701C21EB3000F5F35E /* DataStore */,
+				B6194FA61C13912300153099 /* AppIcons */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -287,26 +298,26 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		8045DD701C21EB3000F5F35E /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+				80DA479A1C21EC9B00FDC6C0 /* CADataService.h */,
+				80DA479B1C21EC9B00FDC6C0 /* CADataService.m */,
+				80DA479C1C21EC9B00FDC6C0 /* CADataStore.h */,
+				80DA479D1C21EC9B00FDC6C0 /* CADataStore.m */,
+				80DA479E1C21EC9B00FDC6C0 /* CAErrorUtils.h */,
+				80DA479F1C21EC9B00FDC6C0 /* CAErrorUtils.m */,
+				8045DD821C21EB4200F5F35E /* CardsappModel.xcdatamodeld */,
+			);
+			name = DataStore;
+			sourceTree = "<group>";
+		};
 		80CF26CE1C1CDFA8005C8A13 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				80CF26D21C1CDFA9005C8A13 /* libRCTTest.a */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		80FF3EFF1C11C7D500AD6D59 /* Store */ = {
-			isa = PBXGroup;
-			children = (
-				80FF3F2E1C121A0900AD6D59 /* CardsappModel.xcdatamodeld */,
-				80FF3F331C1346B500AD6D59 /* CADataStore.h */,
-				80FF3F341C1346B500AD6D59 /* CADataStore.m */,
-				8044E2F51C19AC8000674A7E /* CADataService.h */,
-				8044E2F61C19AC8000674A7E /* CADataService.m */,
-				8012617C1C1C4E0A004D7EEB /* CAErrorUtils.h */,
-				8012617D1C1C4E0A004D7EEB /* CAErrorUtils.m */,
-			);
-			name = Store;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -355,6 +366,14 @@
 				00E356EE1AD99517003FC87E /* cardsappTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		B6194FA61C13912300153099 /* AppIcons */ = {
+			isa = PBXGroup;
+			children = (
+				B6194FB11C13912D00153099 /* App Icon [Squared] */,
+			);
+			name = AppIcons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -570,6 +589,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				B6194FB21C13912D00153099 /* App Icon [Squared] in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,6 +627,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				80FF3F351C1346B500AD6D59 /* CADataStore.m in Sources */,
+				80DA47A11C21EC9B00FDC6C0 /* CADataStore.m in Sources */,
+				80DA47A21C21EC9B00FDC6C0 /* CAErrorUtils.m in Sources */,
+				80DA47A01C21EC9B00FDC6C0 /* CADataService.m in Sources */,
+				8045DD871C21EB4200F5F35E /* CardsappModel.xcdatamodeld in Sources */,
 				8044E2F71C19AC8000674A7E /* CADataService.m in Sources */,
 				8012617E1C1C4E0A004D7EEB /* CAErrorUtils.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
@@ -768,7 +792,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -808,7 +832,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -848,6 +872,17 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
+		8045DD821C21EB4200F5F35E /* CardsappModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8045DD831C21EB4200F5F35E /* CardsappModel.xcdatamodel */,
+			);
+			currentVersion = 8045DD831C21EB4200F5F35E /* CardsappModel.xcdatamodel */;
+			name = CardsappModel.xcdatamodeld;
+			path = cardsapp/CardsappModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		80FF3F2E1C121A0900AD6D59 /* CardsappModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

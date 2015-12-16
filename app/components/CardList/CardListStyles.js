@@ -4,6 +4,7 @@
  *
  * @flow
  */
+import _ from 'lodash';
 import React from 'react-native';
 import colors from '../../constants/colors';
 import fonts from '../../constants/fonts';
@@ -12,9 +13,9 @@ const {
    StyleSheet,
  } = React;
 
-const kMarginTop = 32;
+const kMarginTop = 46;
 const kCellHeight = 120;
-const kCellMarginVertical = 3;
+const kCellMarginVertical = 10;
 const kCellMarginSide = 10;
 
  /**
@@ -22,8 +23,12 @@ const kCellMarginSide = 10;
  */
 const CardListStyles = StyleSheet.create({
   listViewHolder: {
-    backgroundColor: colors.LightGrey,
+    backgroundColor: colors.LightestGrey,
     flex: 1,
+  },
+
+  listViewHolderEditMode: {
+    backgroundColor: colors.LightGrey,
   },
 
   listView: {
@@ -45,7 +50,19 @@ const CardListStyles = StyleSheet.create({
   },
 
   // style properties of a text-element in a CardListElement
-  text: fonts.text,
+  text: _.assign({
+    margin: 20,
+  }, fonts.text),
+
+  editButton: {
+    right: 2 * kCellMarginSide + 10,
+  },
+
+  deleteButton: {
+    right: 2 * kCellMarginSide,
+    top: kCellMarginSide,
+  },
+
 });
 
 export default CardListStyles;
