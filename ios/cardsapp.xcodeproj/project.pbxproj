@@ -21,6 +21,7 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
+		3D98AA4C34196EEA9342A3F6 /* libPods-cardsapp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1283DC98F1368EDB619A1DD /* libPods-cardsapp.a */; };
 		80CF26C21C1CDF67005C8A13 /* CardsAppIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 80CF26C11C1CDF67005C8A13 /* CardsAppIntegrationTests.m */; };
 		80CF26D31C1CDFB4005C8A13 /* libRCTTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80CF26D21C1CDFA9005C8A13 /* libRCTTest.a */; };
 		80DA47A01C21EC9B00FDC6C0 /* CADataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DA479B1C21EC9B00FDC6C0 /* CADataService.m */; };
@@ -152,7 +153,10 @@
 		80FF3F2F1C121A0900AD6D59 /* CardsappModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CardsappModel.xcdatamodel; sourceTree = "<group>"; };
 		80FF3F311C121B3E00AD6D59 /* MicrosoftAzureMobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MicrosoftAzureMobile.framework; path = cardsapp/MicrosoftAzureMobile.framework; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		85390739E45D3AB0C722208D /* Pods-cardsapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cardsapp.release.xcconfig"; path = "Pods/Target Support Files/Pods-cardsapp/Pods-cardsapp.release.xcconfig"; sourceTree = "<group>"; };
 		B6194FB11C13912D00153099 /* App Icon [Squared] */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "App Icon [Squared]"; sourceTree = "<group>"; };
+		E1283DC98F1368EDB619A1DD /* libPods-cardsapp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-cardsapp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E727310D87D97AC1AB6C8DCC /* Pods-cardsapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cardsapp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cardsapp/Pods-cardsapp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +183,7 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
+				3D98AA4C34196EEA9342A3F6 /* libPods-cardsapp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +246,23 @@
 				00E356F11AD99517003FC87E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		01F656050DFD5539CDED2DC3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E727310D87D97AC1AB6C8DCC /* Pods-cardsapp.debug.xcconfig */,
+				85390739E45D3AB0C722208D /* Pods-cardsapp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		09AC8E409083B84352CD5226 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E1283DC98F1368EDB619A1DD /* libPods-cardsapp.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		139105B71AF99BAD00B5F7CC /* Products */ = {
@@ -347,6 +369,8 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* cardsappTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
+				01F656050DFD5539CDED2DC3 /* Pods */,
+				09AC8E409083B84352CD5226 /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -394,10 +418,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "cardsapp" */;
 			buildPhases = (
+				DB6CEF1378F92168ECCE586A /* Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				D258F36A1B21CD045023577C /* Embed Pods Frameworks */,
+				D925E0357A1E02AC3329B817 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -603,6 +630,51 @@
 			shellPath = /bin/sh;
 			shellScript = "../node_modules/react-native/packager/react-native-xcode.sh";
 		};
+		D258F36A1B21CD045023577C /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-cardsapp/Pods-cardsapp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D925E0357A1E02AC3329B817 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-cardsapp/Pods-cardsapp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DB6CEF1378F92168ECCE586A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -692,6 +764,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E727310D87D97AC1AB6C8DCC /* Pods-cardsapp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -708,7 +781,10 @@
 				);
 				INFOPLIST_FILE = cardsapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.antum.cardsapp;
 				PRODUCT_NAME = cardsapp;
 				PROVISIONING_PROFILE = "";
@@ -718,6 +794,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85390739E45D3AB0C722208D /* Pods-cardsapp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -733,7 +810,10 @@
 				);
 				INFOPLIST_FILE = cardsapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.antum.cardsapp;
 				PRODUCT_NAME = cardsapp;
 				PROVISIONING_PROFILE = "";
